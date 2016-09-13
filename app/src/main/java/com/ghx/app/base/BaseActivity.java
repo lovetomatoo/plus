@@ -1,6 +1,5 @@
 package com.ghx.app.base;
 
-import android.annotation.TargetApi;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -35,10 +34,15 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
+        //状态栏和ActivonBar处理，现在写在Base里，后面用不到的话，再移出去
         if (Build.VERSION.SDK_INT >= 21) {
             View decorView = getWindow().getDecorView();
-            int options = View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+            int options =
+                    //这个属性，加上以后，状态栏会消失，可以在状态栏区域下滑，将状态栏划出来，
+//                    View.SYSTEM_UI_FLAG_FULLSCREEN |
+                            View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
             decorView.setSystemUiVisibility(options);
+            //设置状态栏的_背景颜色_为透明__实现所谓的沉浸式状态栏
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
         //隐藏ActionBar
@@ -67,14 +71,15 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
             View decorView = getWindow().getDecorView();
             decorView.setSystemUiVisibility(
                     View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                            | View.SYSTEM_UI_FLAG_FULLSCREEN
-                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+//                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+//                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+//                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+//                            | View.SYSTEM_UI_FLAG_FULLSCREEN
+//                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+            );
         }
-    }*/
-
+    }
+*/
 
     @Override
     protected void onStart() {
