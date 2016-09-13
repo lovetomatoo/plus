@@ -8,13 +8,22 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+
+        <!--Splash 页面____开始-->
+        <activity android:name=".lulu.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--Splash 页面____结束-->
+
+        <!--MainActivity 主页面____开始-->
+        <activity android:name=".lulu.activity.MainActivity"/>
+        <!--MainActivity 主页面____结束-->
+
+
     </application>
 
 </manifest>
