@@ -12,7 +12,7 @@ import com.ghx.app.R;
 /**
  * Created by guo_hx on 2016/9/13.10:32
  */
-public class SplashFragment extends Fragment {
+public class GuideFragment extends Fragment {
 
     private static int[] mArray;
     private static int mPosition = 0;
@@ -20,17 +20,17 @@ public class SplashFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.adapter_splash, container, false);
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.adapter_guide, container, false);
 
         ImageView ivSplash = (ImageView) rootView.findViewById(R.id.iv_splash);
         ivSplash.setImageResource(mArray[mPosition]);
         return rootView;
     }
 
-    public static SplashFragment creatInstance(int[] array, int position) {
+    public static GuideFragment creatInstance(int[] array, int position) {
         mArray = array;
         mPosition = position;
-        SplashFragment splashFragment = new SplashFragment();
+        GuideFragment splashFragment = new GuideFragment();
         return splashFragment;
     }
 

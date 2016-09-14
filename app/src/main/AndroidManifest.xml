@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
 
         <!--Splash 页面____开始-->
-        <activity android:name=".lulu.activity.GuideActivity">
+        <activity android:name=".lulu.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,11 +20,15 @@
         </activity>
         <!--Splash 页面____结束-->
 
+        <!--Guide 页面____开始-->
+        <activity android:name=".lulu.activity.GuideActivity"
+            android:screenOrientation="portrait"/>
+        <!--Guide 页面____结束-->
+
         <!--MainActivity 主页面____开始-->
         <activity
             android:name=".lulu.activity.MainActivity"
-            android:screenOrientation="portrait">
-        </activity>>
+            android:screenOrientation="portrait"/>
         <!--MainActivity 主页面____结束-->
 
 

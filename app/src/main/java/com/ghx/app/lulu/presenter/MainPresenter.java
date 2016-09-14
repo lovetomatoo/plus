@@ -6,9 +6,9 @@ import android.os.Message;
 import com.ghx.app.base.BasePresenter;
 
 /**
- * Created by guo_hx on 2016/9/14.14:34
+ * Created by guo_hx on 2016/9/14.15:05
  */
-public class SplashPresenter extends BasePresenter {
+public class MainPresenter extends BasePresenter {
     @Override
     public void handleMsg(Message msg) {
 

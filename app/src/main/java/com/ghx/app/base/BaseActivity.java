@@ -1,5 +1,8 @@
 package com.ghx.app.base;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -8,7 +11,12 @@ import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.Toast;
+
+import com.ghx.app.lulu.utils.ToastUtil;
 
 /**
  * Created by guo_hx on 2016/9/12.16:16
@@ -121,4 +129,51 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     public Handler getHandler() {
         return mHandler;
     }
+
+    @Override
+    public Activity getActivity() {
+        return BaseActivity.this;
+    }
+
+    @Override
+    public void toast(final String str) {
+
+        makeToast(str);
+    }
+
+    public void makeToast(final String str) {
+        if (!TextUtils.isEmpty(str)){
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    ToastUtil.showToast(str);
+                }
+            });
+        }
+    }
+
+
+    @Override
+    public void to(Class<?> cls, Bundle bundles) {
+        Intent intent = new Intent(this, cls);
+        intent.putExtras(bundles);
+        startActivity(intent);
+    }
+
+    public void to(Class<?> cls) {
+        to(cls, new Bundle());
+    }
+
+    /**
+     * 跳转页面
+     *
+     * @param context
+     * @param cls
+     */
+    public void to(Context context, Class<?> cls) {
+        Intent intent = new Intent(context, cls);
+        context.startActivity(intent);
+    }
+
+
 }

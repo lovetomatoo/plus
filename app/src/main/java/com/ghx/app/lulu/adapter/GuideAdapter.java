@@ -4,24 +4,24 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.ghx.app.lulu.fragment.SplashFragment;
+import com.ghx.app.lulu.fragment.GuideFragment;
 
 /**
  * Created by guo_hx on 2016/9/13.10:47
  */
-public class SplashAdapter extends FragmentStatePagerAdapter {
+public class GuideAdapter extends FragmentStatePagerAdapter {
 
 
     private int[] mArray;
 
-    public SplashAdapter(FragmentManager fm, int[] count) {
+    public GuideAdapter(FragmentManager fm, int[] count) {
         super(fm);
         this.mArray = count;
     }
 
     @Override
     public Fragment getItem(int position) {
-        return SplashFragment.creatInstance(mArray, position);
+        return GuideFragment.creatInstance(mArray, position);
     }
 
     @Override
