@@ -21,7 +21,7 @@ import com.ghx.app.lulu.utils.ToastUtil;
 /**
  * Created by guo_hx on 2016/9/12.16:16
  */
-public abstract class BaseActivity extends AppCompatActivity implements IBaseView {
+public abstract class BaseActivity extends AppCompatActivity implements IBaseView, View.OnClickListener {
 
     private BasePresenter mPresenter;
 
@@ -90,6 +90,11 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
 */
 
     @Override
+    public void onClick(View v) {
+        clickView(v);
+    }
+
+    @Override
     protected void onStart() {
         super.onStart();
         mPresenter.onStart();
@@ -124,6 +129,8 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     protected abstract Class getPresenter();
 
     protected abstract void initView();
+
+    protected abstract void clickView(View v);
 
     @Override
     public Handler getHandler() {

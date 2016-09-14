@@ -1,5 +1,7 @@
 package com.ghx.app.lulu.activity;
 
+import android.view.View;
+
 import com.ghx.app.R;
 import com.ghx.app.base.BaseActivity;
 import com.ghx.app.lulu.config.Constants;
@@ -38,5 +40,10 @@ public class SplashActivity extends BaseActivity implements ISplashView {
                 finish();
             }
         }, 1000);
+    }
+
+    @Override
+    protected void clickView(View v) {
+
     }
 }

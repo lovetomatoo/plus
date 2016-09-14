@@ -1,5 +1,7 @@
 package com.ghx.app.lulu.activity;
 
+import android.view.View;
+
 import com.ghx.app.R;
 import com.ghx.app.base.BaseActivity;
 import com.ghx.app.base.BasePresenter;
@@ -21,6 +23,11 @@ public class MainActivity extends BaseActivity implements IMainView {
 
     @Override
     protected void initView() {
+
+    }
+
+    @Override
+    protected void clickView(View v) {
 
     }
 
