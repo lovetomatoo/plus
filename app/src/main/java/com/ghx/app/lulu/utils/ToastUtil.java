@@ -7,7 +7,6 @@ import com.ghx.app.base.FrameApplication;
 /**
  * Created by guo_hx on 2016/9/13.15:23
  *
- * 来一个单例Toast吧
  */
 public class ToastUtil {
 

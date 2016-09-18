@@ -3,8 +3,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:drawableTop="@drawable/selector_btn_shouye"
+            style="@style/radiobutton_shouye"
+            android:text="首页" />
+
+        <RadioButton
+            android:drawableTop="@drawable/selector_btn_lanmu"
+            style="@style/radiobutton_shouye"
+            android:text="栏目" />
+
+        <RadioButton
+            android:drawableTop="@drawable/selector_btn_yule"
+            style="@style/radiobutton_shouye"
+            android:text="娱乐" />
+
+        <RadioButton
+            android:drawableTop="@drawable/selector_btn_wode"
+            style="@style/radiobutton_shouye"
+            android:text="我的" />
+
+
+
+    </RadioGroup>
+
+
 </RelativeLayout>
