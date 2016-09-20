@@ -36,8 +36,6 @@
             style="@style/radiobutton_shouye"
             android:text="我的" />
 
-
-
     </RadioGroup>
 
     <ImageView
