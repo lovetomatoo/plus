@@ -2,7 +2,9 @@ package com.ghx.app.lulu.activity;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import com.ghx.app.lulu.presenter.MainPresenter;
