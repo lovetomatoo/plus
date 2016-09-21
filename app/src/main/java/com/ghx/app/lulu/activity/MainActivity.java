@@ -33,7 +33,7 @@ public class MainActivity extends BaseActivity implements IMainView {
 
     @Override
     protected void initView() {
-
+        //
         mIvFuceng = (ImageView) findViewById(R.id.iv_fuceng_main);
         BitmapDrawable drawable = (BitmapDrawable) getResources().getDrawable(R.mipmap.love_first);
         Bitmap bitmap = drawable.getBitmap();
