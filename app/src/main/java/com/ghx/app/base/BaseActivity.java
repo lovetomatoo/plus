@@ -122,6 +122,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     protected void onDestroy() {
         super.onDestroy();
         mPresenter.onDestroy();
+        mHandler.removeCallbacksAndMessages(null);
     }
 
     protected abstract int getLayoutId();
