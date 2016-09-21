@@ -6,29 +6,24 @@
  * Copyright (c) 2013年 mob.com. All rights reserved.
  */
 
-package cn.sharesdk.onekeyshare.themes.classic.land;
+package com.ghx.app.lulu.share_sdk;
 
 import java.util.ArrayList;
 
-import cn.sharesdk.onekeyshare.OnekeyShareThemeImpl;
-import cn.sharesdk.onekeyshare.themes.classic.PlatformPage;
-import cn.sharesdk.onekeyshare.themes.classic.PlatformPageAdapter;
+/** 竖屏的九宫格页面 */
+public class PlatformPagePort extends PlatformPage {
 
-/** 横屏的九宫格页面 */
-public class PlatformPageLand extends PlatformPage {
-
-	public PlatformPageLand(OnekeyShareThemeImpl impl) {
+	public PlatformPagePort(OnekeyShareThemeImpl impl) {
 		super(impl);
 	}
 
 	public void onCreate() {
-		requestLandscapeOrientation();
+		requestPortraitOrientation();
 		super.onCreate();
 	}
 
 	protected PlatformPageAdapter newAdapter(ArrayList<Object> cells) {
-		return new PlatformPageAdapterLand(this, cells);
+		return new PlatformPageAdapterPort(this, cells);
 	}
 
 }
-

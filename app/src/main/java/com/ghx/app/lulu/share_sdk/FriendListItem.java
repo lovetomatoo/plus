@@ -6,7 +6,7 @@
  * Copyright (c) 2013年 mob.com. All rights reserved.
  */
 
-package cn.sharesdk.onekeyshare.themes.classic;
+package com.ghx.app.lulu.share_sdk;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -16,7 +16,7 @@ import android.view.Gravity;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import cn.sharesdk.onekeyshare.themes.classic.FriendAdapter.Following;
+import com.ghx.app.lulu.share_sdk.FriendAdapter.Following;
 
 import com.mob.tools.gui.AsyncImageView;
 import com.mob.tools.gui.BitmapProcessor;

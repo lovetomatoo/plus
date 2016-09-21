@@ -6,17 +6,12 @@
  * Copyright (c) 2013年 mob.com. All rights reserved.
  */
 
-package cn.sharesdk.onekeyshare.themes.classic;
+package com.ghx.app.lulu.share_sdk;
 
 import android.content.Context;
 import android.content.res.Configuration;
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.Platform.ShareParams;
-import cn.sharesdk.onekeyshare.OnekeyShareThemeImpl;
-import cn.sharesdk.onekeyshare.themes.classic.land.EditPageLand;
-import cn.sharesdk.onekeyshare.themes.classic.land.PlatformPageLand;
-import cn.sharesdk.onekeyshare.themes.classic.port.EditPagePort;
-import cn.sharesdk.onekeyshare.themes.classic.port.PlatformPagePort;
 
 /** 九宫格经典主题样式的实现类*/
 public class ClassicTheme extends OnekeyShareThemeImpl {

@@ -6,9 +6,7 @@
  * Copyright (c) 2013年 mob.com. All rights reserved.
  */
 
-package cn.sharesdk.onekeyshare;
-
-import cn.sharesdk.onekeyshare.themes.classic.ClassicTheme;
+package com.ghx.app.lulu.share_sdk;
 
 /** 快捷分享的主题样式  */
 public enum OnekeyShareTheme {

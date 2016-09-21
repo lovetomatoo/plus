@@ -6,14 +6,14 @@
  * Copyright (c) 2013年 mob.com. All rights reserved.
  */
 
-package cn.sharesdk.onekeyshare.themes.classic;
+package com.ghx.app.lulu.share_sdk;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.ColorDrawable;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.ImageView.ScaleType;
-import cn.sharesdk.onekeyshare.OnekeySharePage;
-import cn.sharesdk.onekeyshare.OnekeyShareThemeImpl;
+import com.ghx.app.lulu.share_sdk.OnekeySharePage;
+import com.ghx.app.lulu.share_sdk.OnekeyShareThemeImpl;
 
 import com.mob.tools.gui.ScaledImageView;
 

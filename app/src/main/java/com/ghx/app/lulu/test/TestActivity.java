@@ -6,7 +6,7 @@ import android.widget.ImageView;
 import com.ghx.app.R;
 import com.ghx.app.base.BaseActivity;
 import cn.sharesdk.framework.ShareSDK;
-import cn.sharesdk.onekeyshare.OnekeyShare;
+import com.ghx.app.lulu.share_sdk.OnekeyShare;
 
 /**
  * Created by guo_hx on 2016/9/21.11:53

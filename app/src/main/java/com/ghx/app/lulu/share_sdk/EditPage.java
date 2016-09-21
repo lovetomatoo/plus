@@ -6,7 +6,7 @@
  * Copyright (c) 2013年 mob.com. All rights reserved.
  */
 
-package cn.sharesdk.onekeyshare.themes.classic;
+package com.ghx.app.lulu.share_sdk;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,10 +31,6 @@ import android.widget.Toast;
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.Platform.ShareParams;
 import cn.sharesdk.framework.ShareSDK;
-import cn.sharesdk.onekeyshare.OnekeySharePage;
-import cn.sharesdk.onekeyshare.OnekeyShareThemeImpl;
-import cn.sharesdk.onekeyshare.themes.classic.land.FriendListPageLand;
-import cn.sharesdk.onekeyshare.themes.classic.port.FriendListPagePort;
 
 import com.mob.tools.gui.AsyncImageView;
 import com.mob.tools.utils.DeviceHelper;

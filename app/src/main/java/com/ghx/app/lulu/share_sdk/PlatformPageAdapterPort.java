@@ -6,13 +6,13 @@
  * Copyright (c) 2013年 mob.com. All rights reserved.
  */
 
-package cn.sharesdk.onekeyshare.themes.classic.port;
+package com.ghx.app.lulu.share_sdk;
 
 import java.util.ArrayList;
 
 import android.content.Context;
-import cn.sharesdk.onekeyshare.themes.classic.PlatformPage;
-import cn.sharesdk.onekeyshare.themes.classic.PlatformPageAdapter;
+import com.ghx.app.lulu.share_sdk.PlatformPage;
+import com.ghx.app.lulu.share_sdk.PlatformPageAdapter;
 
 import com.mob.tools.utils.R;
 

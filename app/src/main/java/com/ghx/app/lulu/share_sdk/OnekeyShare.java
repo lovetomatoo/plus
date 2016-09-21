@@ -6,7 +6,7 @@
  * Copyright (c) 2013年 mob.com. All rights reserved.
  */
 
-package cn.sharesdk.onekeyshare;
+package com.ghx.app.lulu.share_sdk;
 
 import static com.mob.tools.utils.BitmapHelper.captureView;
 

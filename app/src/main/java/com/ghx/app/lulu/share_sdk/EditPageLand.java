@@ -6,39 +6,41 @@
  * Copyright (c) 2013年 mob.com. All rights reserved.
  */
 
-package cn.sharesdk.onekeyshare.themes.classic.port;
+package com.ghx.app.lulu.share_sdk;
 
 import java.io.File;
 
 import android.graphics.Bitmap;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import cn.sharesdk.onekeyshare.OnekeyShareThemeImpl;
-import cn.sharesdk.onekeyshare.themes.classic.EditPage;
-import cn.sharesdk.onekeyshare.themes.classic.XView;
+import com.ghx.app.lulu.share_sdk.OnekeyShareThemeImpl;
+import com.ghx.app.lulu.share_sdk.EditPage;
+import com.ghx.app.lulu.share_sdk.XView;
 
 import com.mob.tools.gui.AsyncImageView;
 import com.mob.tools.utils.BitmapHelper;
 import com.mob.tools.utils.R;
 
-/** 竖屏的编辑页 */
-public class EditPagePort extends EditPage  {
-	private static final int DESIGN_SCREEN_HEIGHT= 1280;
-	private static final int DESIGN_TITLE_HEIGHT = 96;
+/** 横屏的编辑页 */
+public class EditPageLand extends EditPage implements OnClickListener, TextWatcher, Runnable {
+	private static final int DESIGN_SCREEN_WIDTH= 720;
 	private static final int DESIGN_BOTTOM_HEIGHT = 75;
 	private static final int DESIGN_LEFT_PADDING = 40;
-	private static final int DESIGN_THUMB_HEIGHT = 300;
-	private static final int DESIGN_REMOVE_THUMB_HEIGHT = 70;
+	private static final int DESIGN_TITLE_HEIGHT_L = 70;
+	private static final int DESIGN_THUMB_HEIGHT_L = 280;
+	private static final int DESIGN_REMOVE_THUMB_HEIGHT_L = 60;
 
-	public EditPagePort(OnekeyShareThemeImpl impl) {
+	public EditPageLand(OnekeyShareThemeImpl impl) {
 		super(impl);
 	}
 
@@ -46,7 +48,7 @@ public class EditPagePort extends EditPage  {
 		super.onCreate();
 
 		int screenHeight = R.getScreenHeight(activity);
-		float ratio = ((float) screenHeight) / DESIGN_SCREEN_HEIGHT;
+		float ratio = ((float) screenHeight) / DESIGN_SCREEN_WIDTH;
 
 		maxBodyHeight = 0;
 
@@ -56,7 +58,7 @@ public class EditPagePort extends EditPage  {
 
 		rlTitle = new RelativeLayout(activity);
 		rlTitle.setBackgroundColor(0xffe6e9ec);
-		int titleHeight = (int) (DESIGN_TITLE_HEIGHT * ratio);
+		int titleHeight = (int) (DESIGN_TITLE_HEIGHT_L * ratio);
 
 		LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, titleHeight);
 		llPage.addView(rlTitle, lp);
@@ -127,7 +129,7 @@ public class EditPagePort extends EditPage  {
 		rlBody.addView(svContent, new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 
 		LinearLayout llContent = new LinearLayout(activity);
-		llContent.setOrientation(LinearLayout.VERTICAL);
+		llContent.setOrientation(LinearLayout.HORIZONTAL);
 		svContent.addView(llContent, new ScrollView.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 
 		etContent = new EditText(activity);
@@ -137,16 +139,17 @@ public class EditPagePort extends EditPage  {
 		etContent.setTextColor(0xff3b3b3b);
 		etContent.setTextSize(TypedValue.COMPLEX_UNIT_SP, 21);
 		etContent.setText(sp.getText());
-		LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+		LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(0, LayoutParams.WRAP_CONTENT);
+		lp.weight = 1;
 		llContent.addView(etContent, lp);
 		etContent.addTextChangedListener(this);
 
 		rlThumb = new RelativeLayout(activity);
 		rlThumb.setBackgroundColor(0xff313131);
-		int	thumbWidth = (int) (DESIGN_THUMB_HEIGHT * ratio);
-		int	xWidth = (int) (DESIGN_REMOVE_THUMB_HEIGHT * ratio);
+		int	thumbWidth = (int) (DESIGN_THUMB_HEIGHT_L * ratio);
+		int	xWidth = (int) (DESIGN_REMOVE_THUMB_HEIGHT_L * ratio);
 		lp = new LinearLayout.LayoutParams(thumbWidth, thumbWidth);
-		lp.leftMargin = lp.rightMargin = lp.bottomMargin = lp.topMargin = padding;
+		lp.rightMargin = lp.bottomMargin = lp.topMargin = padding;
 		llContent.addView(rlThumb, lp);
 
 		aivThumb = new AsyncImageView(activity) {
@@ -180,7 +183,7 @@ public class EditPagePort extends EditPage  {
 
 		tvAt = new TextView(activity);
 		tvAt.setTextColor(0xff3b3b3b);
-		tvAt.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22);
+		tvAt.setTextSize(TypedValue.COMPLEX_UNIT_SP, 21);
 		tvAt.setGravity(Gravity.BOTTOM);
 		tvAt.setText("@");
 		int padding = (int) (DESIGN_LEFT_PADDING * ratio);
@@ -196,7 +199,7 @@ public class EditPagePort extends EditPage  {
 
 		tvTextCouter = new TextView(activity);
 		tvTextCouter.setTextColor(0xff3b3b3b);
-		tvTextCouter.setTextSize(TypedValue.COMPLEX_UNIT_SP, 21);
+		tvTextCouter.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
 		tvTextCouter.setGravity(Gravity.BOTTOM | Gravity.RIGHT);
 		onTextChanged(etContent.getText(), 0, 0, 0);
 		tvTextCouter.setPadding(padding, 0, padding, 0);

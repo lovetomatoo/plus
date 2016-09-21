@@ -6,7 +6,7 @@
  * Copyright (c) 2013年 mob.com. All rights reserved.
  */
 
-package cn.sharesdk.onekeyshare.themes.classic;
+package com.ghx.app.lulu.share_sdk;
 
 import java.util.ArrayList;
 
@@ -22,7 +22,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ImageView.ScaleType;
 import cn.sharesdk.framework.Platform;
-import cn.sharesdk.onekeyshare.CustomerLogo;
 
 import com.mob.tools.gui.ViewPagerAdapter;
 import com.mob.tools.utils.R;

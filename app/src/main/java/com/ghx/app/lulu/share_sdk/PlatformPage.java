@@ -6,7 +6,7 @@
  * Copyright (c) 2013年 mob.com. All rights reserved.
  */
 
-package cn.sharesdk.onekeyshare.themes.classic;
+package com.ghx.app.lulu.share_sdk;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,9 +23,6 @@ import cn.sharesdk.framework.CustomPlatform;
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.Platform.ShareParams;
 import cn.sharesdk.framework.ShareSDK;
-import cn.sharesdk.onekeyshare.CustomerLogo;
-import cn.sharesdk.onekeyshare.OnekeySharePage;
-import cn.sharesdk.onekeyshare.OnekeyShareThemeImpl;
 
 import com.mob.tools.gui.MobViewPager;
 import com.mob.tools.utils.R;
