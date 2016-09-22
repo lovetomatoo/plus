@@ -72,7 +72,7 @@ public class MainActivity extends BaseActivity implements IMainView {
 
         mViewPager.setAdapter(new MainViewPagerAdapter(getSupportFragmentManager(), mList));
 
-//        mRadioGroup.check(1);
+        mRadioGroup.check(1);
         mRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
