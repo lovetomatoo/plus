@@ -6,9 +6,11 @@ import android.os.Message;
 import com.ghx.app.base.BasePresenter;
 
 /**
- * Created by guo_hx on 2016/9/14.15:05
+ * Created by guo_hx on 2016/9/22.17:01
  */
-public class MainPresenter extends BasePresenter {
+
+public class FourthFragmentPresenter extends BasePresenter {
+
     @Override
     public void handleMsg(Message msg) {
 
@@ -16,7 +18,6 @@ public class MainPresenter extends BasePresenter {
 
     @Override
     public void initData(Bundle savedInstanceState) {
-
 
     }
 }

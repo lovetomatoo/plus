@@ -1,4 +1,4 @@
-package com.ghx.app.lulu.fragment;
+package com.ghx.app.lulu.fragment.other;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

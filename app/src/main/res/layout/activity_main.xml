@@ -3,47 +3,56 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <android.support.v4.view.ViewPager
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
 
-    <RadioGroup
-        android:layout_gravity="bottom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:orientation="horizontal">
+        <com.ghx.app.lulu.weiget.NoScrollViewPager
+            android:id="@+id/viewpager_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-        <RadioButton
-            android:drawableTop="@null"
-            style="@style/radiobutton_shouye"
-            android:text="首页" />
+        <RadioGroup
+            android:id="@+id/radiogroup_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="bottom"
+            android:orientation="horizontal">
 
-        <RadioButton
-            android:drawableTop="@null"
-            style="@style/radiobutton_shouye"
-            android:text="栏目" />
+            <RadioButton
 
-        <RadioButton
-            android:drawableTop="@null"
-            style="@style/radiobutton_shouye"
-            android:text="娱乐" />
+                style="@style/radiobutton_shouye"
+                android:drawableTop="@null"
+                android:text="首页" />
 
-        <RadioButton
-            android:drawableTop="@null"
-            style="@style/radiobutton_shouye"
-            android:text="我的" />
+            <RadioButton
+                style="@style/radiobutton_shouye"
+                android:drawableTop="@null"
+                android:text="栏目" />
 
-    </RadioGroup>
+            <RadioButton
+                style="@style/radiobutton_shouye"
+                android:drawableTop="@null"
+                android:text="娱乐" />
+
+            <RadioButton
+                style="@style/radiobutton_shouye"
+                android:drawableTop="@null"
+                android:text="我的" />
+
+        </RadioGroup>
+
+    </RelativeLayout>
+
 
     <ImageView
         android:id="@+id/iv_fuceng_main"
-        android:scaleType="centerCrop"
-        android:src="@mipmap/love_first"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/love_first" />
 
 
 </FrameLayout>
