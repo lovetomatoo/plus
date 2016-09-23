@@ -20,6 +20,10 @@ import com.ghx.app.lulu.utils.ToastUtil;
 
 /**
  * Created by guo_hx on 2016/9/12.16:16
+ *
+ * 那时候我们有梦，关于文学，关于爱情，关于穿越世界的旅行。
+ * 如今我们深夜饮酒，杯子碰到一起，都是梦破碎的声音。
+ *
  */
 public abstract class BaseActivity extends AppCompatActivity implements IBaseView, View.OnClickListener {
 

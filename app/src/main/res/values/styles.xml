@@ -17,4 +17,11 @@
         <item name="android:textColor">@drawable/selector_main_tab_textcolor</item>
     </style>
 
+    <!-- 顶部样式 -->
+    <style name="topbar_layout_style">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:background">@drawable/bordergray_bot_stokwhite</item>
+    </style>
+
 </resources>

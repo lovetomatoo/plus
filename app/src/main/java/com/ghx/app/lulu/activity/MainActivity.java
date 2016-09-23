@@ -1,16 +1,11 @@
 package com.ghx.app.lulu.activity;
 
-import android.app.ActivityManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.provider.Settings;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 
@@ -20,8 +15,6 @@ import com.ghx.app.lulu.fragment.home.HomeFragment;
 import com.ghx.app.lulu.fragment.home.SecondFragment;
 import com.ghx.app.lulu.fragment.home.ThirdFragment;
 import com.ghx.app.lulu.presenter.MainPresenter;
-import com.ghx.app.lulu.presenter.ThirdFragmentPresenter;
-import com.ghx.app.lulu.test.TestActivity;
 import com.ghx.app.lulu.utils.AnimaUtils;
 import com.ghx.app.lulu.utils.FastBlurUtil;
 import com.ghx.app.lulu.utils.ToastUtil;
