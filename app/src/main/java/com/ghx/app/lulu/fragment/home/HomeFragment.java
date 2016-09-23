@@ -3,7 +3,9 @@ package com.ghx.app.lulu.fragment.home;
 import com.ghx.app.R;
 import com.ghx.app.base.BaseFragment;
 import com.ghx.app.lulu.presenter.HomeFragmentPresenter;
+import com.ghx.app.lulu.utils.ToastUtil;
 
+import android.util.Log;
 import android.view.View;
 
 /**

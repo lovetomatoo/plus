@@ -70,7 +70,7 @@ public class MainActivity extends BaseActivity implements IMainView {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 ToastUtil.showToast(checkedId+"");
-                mViewPager.setCurrentItem(checkedId);
+                mViewPager.setCurrentItem(checkedId - 1, false);
             }
         });
     }

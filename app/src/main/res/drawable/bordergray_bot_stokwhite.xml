@@ -12,7 +12,7 @@
     <item android:bottom="@dimen/line_width" android:top="0dp">
         <shape>
 
-            <solid android:color="@color/white_main"  />
+            <solid android:color="@color/main_color"  />
 
 
         </shape>
