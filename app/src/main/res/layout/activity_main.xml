@@ -22,24 +22,23 @@
             android:orientation="horizontal">
 
             <RadioButton
-
                 style="@style/radiobutton_shouye"
-                android:drawableTop="@null"
+                android:drawableTop="@drawable/selector_icon_home"
                 android:text="首页" />
 
             <RadioButton
                 style="@style/radiobutton_shouye"
-                android:drawableTop="@null"
-                android:text="栏目" />
+                android:drawableTop="@drawable/selector_icon_shexiang"
+                android:text="照片" />
 
             <RadioButton
                 style="@style/radiobutton_shouye"
-                android:drawableTop="@null"
-                android:text="娱乐" />
+                android:drawableTop="@drawable/selector_icon_naozhong"
+                android:text="闹钟" />
 
             <RadioButton
                 style="@style/radiobutton_shouye"
-                android:drawableTop="@null"
+                android:drawableTop="@drawable/selector_icon_mine"
                 android:text="我的" />
 
         </RadioGroup>
