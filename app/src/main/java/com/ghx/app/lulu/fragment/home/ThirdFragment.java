@@ -6,12 +6,13 @@ import com.ghx.app.R;
 import com.ghx.app.base.BaseFragment;
 import com.ghx.app.base.IBaseView;
 import com.ghx.app.lulu.presenter.ThirdFragmentPresenter;
+import com.ghx.app.lulu.view.IThirdFragmentView;
 
 /**
  * Created by guo_hx on 2016/9/22.17:18
  */
 
-public class ThirdFragment extends BaseFragment implements IBaseView {
+public class ThirdFragment extends BaseFragment implements IThirdFragmentView {
 
     @Override
     protected int getLayoutId() {
@@ -26,5 +27,10 @@ public class ThirdFragment extends BaseFragment implements IBaseView {
     @Override
     protected void initAllWidget(View rootView) {
         getTopbar().hideBackBtn();
+    }
+
+    @Override
+    protected void clickView(View v) {
+
     }
 }
