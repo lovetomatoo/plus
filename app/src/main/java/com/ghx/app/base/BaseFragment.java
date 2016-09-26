@@ -8,7 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.ghx.app.R;
 import com.ghx.app.lulu.utils.ToastUtil;
+import com.ghx.app.lulu.weiget.Topbar;
 
 /**
  * Created by guo_hx on 2016/9/22.16:13
@@ -26,6 +28,7 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
                 }
         }
     };
+    private Topbar mTopbar;
 
     public BaseFragment() {
 
@@ -45,6 +48,7 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
         View rootView = inflater.inflate(getLayoutId(), container, false);
 
         mPresenter.initData(savedInstanceState);
+        mTopbar = (Topbar) rootView.findViewById(R.id.topbar);
         initAllWidget(rootView);
         viewShow();
         return rootView;
@@ -81,5 +85,10 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
     @Override
     public void to(Class<?> cls, Bundle bundles) {
         ToastUtil.showToast("to");
+    }
+
+    public Topbar getTopbar() {
+
+        return mTopbar;
     }
 }

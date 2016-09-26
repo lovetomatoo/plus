@@ -6,8 +6,9 @@
     android:orientation="vertical">
 
     <com.ghx.app.lulu.weiget.Topbar
+        android:id="@+id/topbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:top_title="第二页" />
+        app:top_title="@string/title_second" />
 
 </LinearLayout>

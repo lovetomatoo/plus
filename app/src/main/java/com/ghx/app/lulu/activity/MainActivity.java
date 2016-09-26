@@ -69,7 +69,7 @@ public class MainActivity extends BaseActivity implements IMainView {
         mRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                ToastUtil.showToast(checkedId+"");
+
                 mViewPager.setCurrentItem(checkedId - 1, false);
             }
         });

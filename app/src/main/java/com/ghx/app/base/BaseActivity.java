@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.ghx.app.R;
 import com.ghx.app.lulu.utils.ToastUtil;
+import com.ghx.app.lulu.weiget.Topbar;
 
 /**
  * Created by guo_hx on 2016/9/12.16:16
@@ -38,6 +39,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
             }
         }
     };
+    private Topbar mTopbar;
 
     protected void handleMsg(Message msg) {
         mPresenter.handleMsg(msg);
@@ -62,6 +64,8 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
         }
 
         mPresenter.initData(savedInstanceState);
+
+        mTopbar = (Topbar) findViewById(R.id.topbar);
 
         initView();
 
@@ -192,6 +196,11 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     public void to(Context context, Class<?> cls) {
         Intent intent = new Intent(context, cls);
         context.startActivity(intent);
+    }
+
+    public Topbar getTopbar() {
+
+        return mTopbar;
     }
 
 

@@ -25,6 +25,6 @@ public class FourthFragment extends BaseFragment implements IBaseView {
 
     @Override
     protected void initAllWidget(View rootView) {
-
+        getTopbar().hideBackBtn();
     }
 }

@@ -1,8 +1,11 @@
 <resources>
-    <string name="app_name">lulu</string>
+    <string name="app_name">露露酱</string>
 
 
-    <string name="text1">(</string>
-    <string name="text2">)</string>
+
+    <string name="title_home">首页</string>
+    <string name="title_second">照片</string>
+    <string name="title_third">闹钟</string>
+    <string name="title_fourth">我的</string>
 
 </resources>
