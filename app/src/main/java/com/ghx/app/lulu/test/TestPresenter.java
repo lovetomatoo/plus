@@ -10,6 +10,7 @@ import com.ghx.app.base.BasePresenter;
  */
 
 public class TestPresenter extends BasePresenter {
+
     @Override
     public void handleMsg(Message msg) {
 

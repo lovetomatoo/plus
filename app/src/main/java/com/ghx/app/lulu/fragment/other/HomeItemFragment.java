@@ -1,6 +1,7 @@
 package com.ghx.app.lulu.fragment.other;
 
 import android.view.View;
+import android.widget.TextView;
 
 import com.ghx.app.R;
 import com.ghx.app.base.BaseFragment;
@@ -14,6 +15,9 @@ import com.ghx.app.lulu.view.IHomeItemFragmentView;
 
 public class HomeItemFragment extends BaseFragment implements IHomeItemFragmentView {
 
+    private String mFlag;
+    private TextView mTvHomeViewPagerItem;
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_home_item;
@@ -26,11 +30,17 @@ public class HomeItemFragment extends BaseFragment implements IHomeItemFragmentV
 
     @Override
     protected void initAllWidget(View rootView) {
-
+        mTvHomeViewPagerItem = (TextView) rootView.findViewById(R.id.tv_home_viewpager_item);
+        mTvHomeViewPagerItem.setText(mFlag);
     }
 
     @Override
     protected void clickView(View v) {
 
+    }
+
+    public void setFlag(String flag) {
+
+        mFlag = flag;
     }
 }

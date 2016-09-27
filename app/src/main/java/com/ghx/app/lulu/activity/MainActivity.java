@@ -69,10 +69,11 @@ public class MainActivity extends BaseActivity implements IMainView {
         mRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-
                 mViewPager.setCurrentItem(checkedId - 1, false);
             }
         });
+
+        mViewPager.setOffscreenPageLimit(100);
     }
 
     private void initFragment() {

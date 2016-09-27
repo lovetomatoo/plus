@@ -3,6 +3,11 @@ package com.ghx.app.lulu.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.view.ViewGroup;
+
+import com.ghx.app.lulu.fragment.other.HomeItemFragment;
+import com.ghx.app.lulu.model.HomeViewPagerBean;
+import com.ghx.app.lulu.utils.LogUtil;
 
 import java.util.List;
 
@@ -13,20 +18,29 @@ import java.util.List;
 public class HomeViewPagerAdapter extends FragmentStatePagerAdapter {
 
 
-    private List<Fragment> mList;
+    private List<HomeViewPagerBean> mList;
 
-    public HomeViewPagerAdapter(FragmentManager fm, List<Fragment> list) {
+    public HomeViewPagerAdapter(FragmentManager fm, List<HomeViewPagerBean> list) {
         super(fm);
         mList = list;
     }
 
     @Override
     public Fragment getItem(int position) {
-        return mList.get(position);
+        HomeItemFragment homeItemFragment = new HomeItemFragment();
+        homeItemFragment.setFlag(mList.get(position).id);
+        LogUtil.i_log("new HomeItemFragment()");
+        return homeItemFragment;
     }
 
     @Override
     public int getCount() {
         return mList == null ? 0 : mList.size();
     }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return mList.get(position).title;
+    }
+
 }

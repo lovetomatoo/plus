@@ -3,12 +3,13 @@ package com.ghx.app.lulu.fragment.home;
 import com.ghx.app.R;
 import com.ghx.app.base.BaseFragment;
 import com.ghx.app.lulu.adapter.HomeViewPagerAdapter;
-import com.ghx.app.lulu.fragment.other.HomeItemFragment;
+import com.ghx.app.lulu.model.HomeViewPagerBean;
 import com.ghx.app.lulu.presenter.HomeFragmentPresenter;
+import com.ghx.app.lulu.utils.LogUtil;
+import com.ghx.app.lulu.utils.ToastUtil;
 import com.ghx.app.lulu.view.IHomeFragmentView;
 
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
@@ -21,10 +22,10 @@ import java.util.List;
 
 public class HomeFragment extends BaseFragment implements IHomeFragmentView {
 
+    private List<HomeViewPagerBean> mList = new ArrayList<>();
+
     private ViewPager mViewPagerHome;
     private TabLayout mTabLayoutHome;
-
-    private List<Fragment> mList = new ArrayList<>();
 
     @Override
     protected int getLayoutId() {
@@ -43,30 +44,36 @@ public class HomeFragment extends BaseFragment implements IHomeFragmentView {
 
         getTopbar().hideBackBtn();
 
-        initFragment();
-
         mViewPagerHome = (ViewPager) rootView.findViewById(R.id.viewpager_home);
         mTabLayoutHome = (TabLayout) rootView.findViewById(R.id.tablayout_home);
 
-        mTabLayoutHome.setupWithViewPager(mViewPagerHome);
-
-        HomeViewPagerAdapter homeViewPagerAdapter = new HomeViewPagerAdapter(getFragmentManager(), mList);
-        mViewPagerHome.setAdapter(homeViewPagerAdapter);
-    }
-
-    private void initFragment() {
-        HomeItemFragment homeItemFragment1 = new HomeItemFragment();
-        HomeItemFragment homeItemFragment2 = new HomeItemFragment();
-        HomeItemFragment homeItemFragment3 = new HomeItemFragment();
-
-        mList.add(homeItemFragment1);
-        mList.add(homeItemFragment2);
-        mList.add(homeItemFragment3);
-
+        mTabLayoutHome.setTabMode(TabLayout.MODE_FIXED);
+        LogUtil.i_log("HomeFragment_initAllWidget");
     }
 
     @Override
     protected void clickView(View v) {
 
     }
+
+    @Override
+    public void showList(List<HomeViewPagerBean> list) {
+
+        mList.clear();
+        mList.addAll(list);
+
+        HomeViewPagerAdapter homeViewPagerAdapter = new HomeViewPagerAdapter(getActivity().getSupportFragmentManager(), mList);
+        mViewPagerHome.setAdapter(homeViewPagerAdapter);
+        mViewPagerHome.setOffscreenPageLimit(100);
+
+        mTabLayoutHome.setupWithViewPager(mViewPagerHome);
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        LogUtil.i_log("HomeFragment_onDestroy");
+    }
+
 }

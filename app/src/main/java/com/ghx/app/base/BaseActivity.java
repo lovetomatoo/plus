@@ -63,6 +63,8 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
             e.printStackTrace();
         }
 
+        mPresenter.setIView(this);
+
         mPresenter.initData(savedInstanceState);
 
         mTopbar = (Topbar) findViewById(R.id.topbar);
@@ -136,8 +138,9 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mPresenter.onDestroy();
         mHandler.removeCallbacksAndMessages(null);
+        mPresenter.onDestroy();
+//        mPresenter = null;
     }
 
     protected abstract int getLayoutId();

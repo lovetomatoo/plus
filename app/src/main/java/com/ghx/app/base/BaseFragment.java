@@ -40,6 +40,7 @@ public abstract class BaseFragment extends Fragment implements IBaseView, View.O
             e.printStackTrace();
         }
 
+        mPresenter.setIView(this);
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,12 +51,8 @@ public abstract class BaseFragment extends Fragment implements IBaseView, View.O
         mPresenter.initData(savedInstanceState);
         mTopbar = (Topbar) rootView.findViewById(R.id.topbar);
         initAllWidget(rootView);
-        viewShow();
-        return rootView;
-    }
-
-    private void viewShow() {
         mPresenter.viewShow();
+        return rootView;
     }
 
     protected void handleMsg(Message msg) {
@@ -93,5 +90,11 @@ public abstract class BaseFragment extends Fragment implements IBaseView, View.O
     public Topbar getTopbar() {
 
         return mTopbar;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+//        mPresenter = null;
     }
 }
