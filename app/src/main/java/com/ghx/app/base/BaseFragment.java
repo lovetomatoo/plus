@@ -16,9 +16,9 @@ import com.ghx.app.lulu.weiget.Topbar;
  * Created by guo_hx on 2016/9/22.16:13
  */
 
-public abstract class BaseFragment extends Fragment implements IBaseView, View.OnClickListener {
+public abstract class BaseFragment<P extends BasePresenter> extends Fragment implements IBaseView, View.OnClickListener {
 
-    private BasePresenter mPresenter;
+    protected P mPresenter;
 
     Handler mHandler = new Handler() {
         @Override
@@ -33,7 +33,7 @@ public abstract class BaseFragment extends Fragment implements IBaseView, View.O
     public BaseFragment() {
 
         try {
-            mPresenter = (BasePresenter) getPresenter().newInstance();
+            mPresenter = (P) getPresenter().newInstance();
         } catch (java.lang.InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -42,6 +42,7 @@ public abstract class BaseFragment extends Fragment implements IBaseView, View.O
 
         mPresenter.setIView(this);
     }
+
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

@@ -5,7 +5,6 @@ import android.widget.TextView;
 
 import com.ghx.app.R;
 import com.ghx.app.base.BaseFragment;
-import com.ghx.app.base.IBaseView;
 import com.ghx.app.lulu.presenter.HomeItemFragmentPresenter;
 import com.ghx.app.lulu.view.IHomeItemFragmentView;
 
@@ -13,7 +12,7 @@ import com.ghx.app.lulu.view.IHomeItemFragmentView;
  * Created by guo_hx on 2016/9/26.17:10
  */
 
-public class HomeItemFragment extends BaseFragment implements IHomeItemFragmentView {
+public class HomeItemFragment extends BaseFragment<HomeItemFragmentPresenter> implements IHomeItemFragmentView {
 
     private String mFlag;
     private TextView mTvHomeViewPagerItem;
@@ -24,14 +23,19 @@ public class HomeItemFragment extends BaseFragment implements IHomeItemFragmentV
     }
 
     @Override
-    protected Class getPresenter() {
+    protected Class<HomeItemFragmentPresenter> getPresenter() {
         return HomeItemFragmentPresenter.class;
     }
 
     @Override
     protected void initAllWidget(View rootView) {
+
         mTvHomeViewPagerItem = (TextView) rootView.findViewById(R.id.tv_home_viewpager_item);
         mTvHomeViewPagerItem.setText(mFlag);
+
+//        mPresenter.getServerData(mFlag);
+        mPresenter.getServerData(mFlag);
+
     }
 
     @Override

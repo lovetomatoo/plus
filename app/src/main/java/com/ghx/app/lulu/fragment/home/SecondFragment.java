@@ -12,7 +12,7 @@ import com.ghx.app.lulu.view.ISecondFragmentView;
  * Created by guo_hx on 2016/9/22.17:13
  */
 
-public class SecondFragment extends BaseFragment implements ISecondFragmentView {
+public class SecondFragment extends BaseFragment<SecondFragmentPresenter> implements ISecondFragmentView {
 
     @Override
     protected int getLayoutId() {

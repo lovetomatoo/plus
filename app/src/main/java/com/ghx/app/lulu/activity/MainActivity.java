@@ -26,7 +26,7 @@ import com.ghx.app.lulu.weiget.NoScrollViewPager;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends BaseActivity implements IMainView {
+public class MainActivity extends BaseActivity<MainPresenter> implements IMainView {
 
     private long exitTime = 0;
 
@@ -95,6 +95,7 @@ public class MainActivity extends BaseActivity implements IMainView {
             case R.id.iv_fuceng_main: {
                 AnimaUtils.alphaAnim(1.0F, 0, 1000, mIvFuceng);
                 mIvFuceng.setVisibility(View.GONE);
+                mIvFuceng.setClickable(false);
             }
             break;
         }

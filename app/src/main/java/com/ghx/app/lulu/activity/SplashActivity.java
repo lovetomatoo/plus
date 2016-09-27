@@ -12,7 +12,7 @@ import com.ghx.app.lulu.view.ISplashView;
 /**
  * Created by guo_hx on 2016/9/14.14:32
  */
-public class SplashActivity extends BaseActivity implements ISplashView {
+public class SplashActivity extends BaseActivity<SplashPresenter> implements ISplashView {
 
     @Override
     protected int getLayoutId() {
@@ -39,7 +39,7 @@ public class SplashActivity extends BaseActivity implements ISplashView {
                 }
                 finish();
             }
-        }, 1000);
+        }, 500);
     }
 
     @Override

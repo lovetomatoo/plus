@@ -12,7 +12,7 @@ import com.ghx.app.lulu.view.IThirdFragmentView;
  * Created by guo_hx on 2016/9/22.17:18
  */
 
-public class ThirdFragment extends BaseFragment implements IThirdFragmentView {
+public class ThirdFragment extends BaseFragment<ThirdFragmentPresenter> implements IThirdFragmentView {
 
     @Override
     protected int getLayoutId() {

@@ -21,4 +21,8 @@ public class HomeItemFragmentPresenter extends BasePresenter {
     public void initData(Bundle savedInstanceState) {
 
     }
+
+    public void getServerData(String mFlag) {
+
+    }
 }

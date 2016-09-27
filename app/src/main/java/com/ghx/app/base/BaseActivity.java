@@ -27,9 +27,9 @@ import com.ghx.app.lulu.weiget.Topbar;
  * 如今我们深夜饮酒，杯子碰到一起，都是梦破碎的声音。
  *
  */
-public abstract class BaseActivity extends AppCompatActivity implements IBaseView, View.OnClickListener {
+public abstract class BaseActivity<P extends BasePresenter> extends AppCompatActivity implements IBaseView, View.OnClickListener {
 
-    private BasePresenter mPresenter;
+    private P mPresenter;
 
     Handler mHandler = new Handler() {
         @Override
@@ -56,7 +56,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
         actionBar.hide();
 
         try {
-            mPresenter = (BasePresenter) getPresenter().newInstance();
+            mPresenter = (P) getPresenter().newInstance();
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -205,6 +205,5 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
 
         return mTopbar;
     }
-
 
 }

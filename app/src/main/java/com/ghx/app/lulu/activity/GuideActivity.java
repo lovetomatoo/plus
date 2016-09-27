@@ -22,7 +22,7 @@ import com.ghx.app.lulu.weiget.GuideView;
  * 我觉得这样写代码，贼爽，比如，产品或者UI让我改一改UI，我只需要去找我的GuideView就可以了，如果让我
  * 改业务逻辑，那么我就在这个Activty和Presenter里面找就好了，这里面没啥UI的处理，所以应该非常清晰。
  */
-public class GuideActivity extends BaseActivity implements IGuideView {
+public class GuideActivity extends BaseActivity<GuidePresenter> implements IGuideView {
 
     private GuideView mGvGuide;
 

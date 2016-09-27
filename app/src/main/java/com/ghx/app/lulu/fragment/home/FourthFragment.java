@@ -12,7 +12,7 @@ import com.ghx.app.lulu.view.IFourthFragmentView;
  * Created by guo_hx on 2016/9/22.17:18
  */
 
-public class FourthFragment extends BaseFragment implements IFourthFragmentView {
+public class FourthFragment extends BaseFragment<FourthFragmentPresenter> implements IFourthFragmentView {
 
     @Override
     protected int getLayoutId() {

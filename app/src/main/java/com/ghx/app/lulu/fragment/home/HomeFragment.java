@@ -20,7 +20,7 @@ import java.util.List;
  * Created by guo_hx on 2016/9/22.16:09
  */
 
-public class HomeFragment extends BaseFragment implements IHomeFragmentView {
+public class HomeFragment extends BaseFragment<HomeFragmentPresenter> implements IHomeFragmentView {
 
     private List<HomeViewPagerBean> mList = new ArrayList<>();
 
