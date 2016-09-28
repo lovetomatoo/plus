@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.ghx.app.R;
 import com.ghx.app.base.BaseFragment;
 import com.ghx.app.lulu.presenter.HomeItemFragmentPresenter;
@@ -43,6 +44,7 @@ public class HomeItemFragment extends BaseFragment<HomeItemFragmentPresenter> im
         for (int i = 0; i < 5; i++) {
             TextView textView = new TextView(getActivity());
             View view = View.inflate(getActivity(), R.layout.item_auto_viewpager, null);
+
             switch (mFlag) {
                 case "id = " + 0:
                     textView.setText(i + "00000哈哈，我是都比，你能咋地");
