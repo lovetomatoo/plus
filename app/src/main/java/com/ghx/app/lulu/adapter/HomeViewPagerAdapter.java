@@ -5,6 +5,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.ViewGroup;
 
+import com.ghx.app.lulu.fragment.home.FourthFragment;
+import com.ghx.app.lulu.fragment.home.HomeFragment;
+import com.ghx.app.lulu.fragment.other.GuideFragment;
 import com.ghx.app.lulu.fragment.other.HomeItemFragment;
 import com.ghx.app.lulu.model.HomeViewPagerBean;
 import com.ghx.app.lulu.utils.LogUtil;
@@ -17,7 +20,6 @@ import java.util.List;
 
 public class HomeViewPagerAdapter extends FragmentStatePagerAdapter {
 
-
     private List<HomeViewPagerBean> mList;
 
     public HomeViewPagerAdapter(FragmentManager fm, List<HomeViewPagerBean> list) {
@@ -27,10 +29,15 @@ public class HomeViewPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        HomeItemFragment homeItemFragment = new HomeItemFragment();
-        homeItemFragment.setFlag(mList.get(position).id);
-        LogUtil.i_log("new HomeItemFragment()");
-        return homeItemFragment;
+        if (position == 0) {
+            HomeItemFragment homeItemFragment = new HomeItemFragment();
+            homeItemFragment.setFlag(mList.get(position).id);
+            LogUtil.i_log("new HomeItemFragment()");
+            return homeItemFragment;
+        } else {
+            return new FourthFragment();
+        }
+
     }
 
     @Override
