@@ -14,6 +14,7 @@ import android.view.animation.Interpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.ghx.app.lulu.model.LunbotuBean;
 import com.ghx.app.lulu.utils.ImageLoadUtil;
 import com.ghx.app.lulu.utils.ToastUtil;
 
@@ -406,13 +407,14 @@ public class AutoScrollViewPager extends ViewPager {
 
     /**
      * 设置数据
+     * @param photolist
      */
-    public void setPhotoData(final List<String> photolist) {
+    public void setPhotoData(final List<LunbotuBean.LunbotuItemBean> photolist) {
         if (photolist == null || photolist.size() == 0)
             return;
         List<View> advPics = new ArrayList<View>();
         for (int i = 0; i < photolist.size(); i++) {
-            String url = photolist.get(i);
+            String url = photolist.get(i).pic_url;
 
             ImageView img = new ImageView(context);
             LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT);

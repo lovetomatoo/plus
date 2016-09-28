@@ -1,15 +1,11 @@
 package com.ghx.app.lulu.fragment.other;
 
-import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.widget.ImageView;
 
 import com.ghx.app.R;
 import com.ghx.app.base.BaseFragment;
-import com.ghx.app.lulu.adapter.HomeLunbotuAdapter;
 import com.ghx.app.lulu.model.LunbotuBean;
 import com.ghx.app.lulu.presenter.HomeItemFragmentPresenter;
-import com.ghx.app.lulu.utils.ImageLoadUtil;
 import com.ghx.app.lulu.view.IHomeItemFragmentView;
 import com.ghx.app.lulu.weiget.autoscroll_viewpager.AutoScrollViewPager;
 
@@ -22,7 +18,6 @@ import java.util.List;
 
 public class HomeItemFragment extends BaseFragment<HomeItemFragmentPresenter> implements IHomeItemFragmentView {
 
-    List<View> mViewList = new ArrayList<>();
     List<String> mPicUrlList = new ArrayList<>();
 
     private String mFlag;
@@ -57,20 +52,8 @@ public class HomeItemFragment extends BaseFragment<HomeItemFragmentPresenter> im
 
     @Override
     public void showAds(LunbotuBean response) {
-
-        for (int i = 0; i < response.data.size(); i++) {
-            mPicUrlList.add(response.data.get(i).pic_url);
-
-           /* View view = View.inflate(getActivity(), R.layout.item_auto_viewpager, null);
-            ImageView ivAutoItem = (ImageView) view.findViewById(R.id.iv_auto_item);
-            ImageLoadUtil.LoadImage(getActivity(), mPicUrlList.get(i), ivAutoItem);
-
-            mViewList.add(view);*/
-
-        }
-
-//        mVpAuto.setAdapter(new HomeLunbotuAdapter(mViewList));
-        mVpAuto.setPhotoData(mPicUrlList);
+        List<LunbotuBean.LunbotuItemBean> data = response.data;
+        mVpAuto.setPhotoData(data);
         mVpAuto.setBorderAnimation(false);
     }
 }
