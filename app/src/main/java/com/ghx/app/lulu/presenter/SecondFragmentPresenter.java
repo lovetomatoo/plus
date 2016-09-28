@@ -10,7 +10,7 @@ import com.ghx.app.lulu.view.ISecondFragmentView;
  * Created by guo_hx on 2016/9/22.17:01
  */
 
-public class SecondFragmentPresenter extends BasePresenter {
+public class SecondFragmentPresenter extends BasePresenter<ISecondFragmentView> {
 
     @Override
     public void handleMsg(Message msg) {

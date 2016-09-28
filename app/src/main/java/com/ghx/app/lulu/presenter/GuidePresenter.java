@@ -9,7 +9,7 @@ import com.ghx.app.lulu.view.IGuideView;
 /**
  * Created by guo_hx on 2016/9/12.20:16
  */
-public class GuidePresenter extends BasePresenter {
+public class GuidePresenter extends BasePresenter<IGuideView> {
 
     @Override
     public void handleMsg(Message msg) {

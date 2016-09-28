@@ -4,12 +4,14 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.ghx.app.R;
 import com.ghx.app.base.BaseFragment;
+import com.ghx.app.lulu.model.LunbotuBean;
 import com.ghx.app.lulu.presenter.HomeItemFragmentPresenter;
+import com.ghx.app.lulu.utils.ImageLoadUtil;
 import com.ghx.app.lulu.view.IHomeItemFragmentView;
 
 import java.util.ArrayList;
@@ -22,6 +24,7 @@ import java.util.List;
 public class HomeItemFragment extends BaseFragment<HomeItemFragmentPresenter> implements IHomeItemFragmentView {
 
     List<View> mViewList = new ArrayList<>();
+    List<String> mPicUrlList = new ArrayList<>();
 
     private String mFlag;
     private ViewPager mVpAuto;
@@ -41,34 +44,37 @@ public class HomeItemFragment extends BaseFragment<HomeItemFragmentPresenter> im
 
         mVpAuto = (ViewPager) rootView.findViewById(R.id.vp_auto);
 
-        for (int i = 0; i < 5; i++) {
-            TextView textView = new TextView(getActivity());
-            View view = View.inflate(getActivity(), R.layout.item_auto_viewpager, null);
+    }
 
-            switch (mFlag) {
-                case "id = " + 0:
-                    textView.setText(i + "00000哈哈，我是都比，你能咋地");
-                    break;
-                case "id = " + 1:
-                    textView.setText(i + "11111哈哈，我是都比，你能咋地");
-                    break;
-                case "id = " + 2:
-                    textView.setText(i + "22222哈哈，我是都比，你能咋地");
-                    break;
-                case "id = " + 3:
-                    textView.setText(i + "33333哈哈，我是都比，你能咋地");
-                    break;
-                case "id = " + 4:
-                    textView.setText(i + "44444哈哈，我是都比，你能咋地");
-                    break;
-            }
+    @Override
+    protected void clickView(View v) {
+
+    }
+
+    public void setFlag(String flag) {
+
+        mFlag = flag;
+    }
+
+    @Override
+    public void showAds(LunbotuBean response) {
+
+        for (int i = 0; i < response.data.size(); i++) {
+            mPicUrlList.add(response.data.get(i).pic_url);
+
+            View view = View.inflate(getActivity(), R.layout.item_auto_viewpager, null);
+            ImageView ivAutoItem = (ImageView) view.findViewById(R.id.iv_auto_item);
+            ImageLoadUtil.LoadImage(getActivity(), mPicUrlList.get(i), ivAutoItem);
+
             mViewList.add(view);
         }
+
+        mVpAuto.removeAllViews();
 
         mVpAuto.setAdapter(new PagerAdapter() {
             @Override
             public int getCount() {
-                return 5;
+                return mPicUrlList == null ? 0 : mPicUrlList.size();
             }
 
             @Override
@@ -91,19 +97,5 @@ public class HomeItemFragment extends BaseFragment<HomeItemFragmentPresenter> im
 
 
         });
-
-
-        mPresenter.getServerData(mFlag);
-
-    }
-
-    @Override
-    protected void clickView(View v) {
-
-    }
-
-    public void setFlag(String flag) {
-
-        mFlag = flag;
     }
 }

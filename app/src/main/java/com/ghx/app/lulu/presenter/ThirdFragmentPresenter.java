@@ -10,7 +10,7 @@ import com.ghx.app.lulu.view.IThirdFragmentView;
  * Created by guo_hx on 2016/9/22.17:01
  */
 
-public class ThirdFragmentPresenter extends BasePresenter {
+public class ThirdFragmentPresenter extends BasePresenter<IThirdFragmentView> {
 
     @Override
     public void handleMsg(Message msg) {

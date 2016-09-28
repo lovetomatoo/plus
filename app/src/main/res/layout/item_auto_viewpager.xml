@@ -4,13 +4,8 @@
     android:layout_height="match_parent">
 
     <ImageView
+        android:id="@+id/iv_auto_item"
         android:src="@mipmap/love_ten"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:layout_alignParentBottom="true"
-        android:text="描述信息"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
