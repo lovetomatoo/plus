@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:drawable="@mipmap/img_top_loading_jj1"
+        android:duration="20" />
+    <item
+        android:drawable="@mipmap/img_top_loading_jj2"
+        android:duration="20" />
+    <item
+        android:drawable="@mipmap/img_top_loading_jj3"
+        android:duration="20" />
+    <item
+        android:drawable="@mipmap/img_top_loading_jj4"
+        android:duration="20" />
+    <item
+        android:drawable="@mipmap/img_top_loading_jj5"
+        android:duration="20" />
+    <item
+        android:drawable="@mipmap/img_top_loading_jj6"
+        android:duration="20" />
+    <item
+        android:drawable="@mipmap/img_top_loading_jj7"
+        android:duration="20" />
+    <item
+        android:drawable="@mipmap/img_top_loading_jj8"
+        android:duration="20" />
+    <item
+        android:drawable="@mipmap/img_top_loading_jj9"
+        android:duration="20" />
+    <item
+        android:drawable="@mipmap/img_top_loading_jj10"
+        android:duration="20" />
+    <item
+        android:drawable="@mipmap/img_top_loading_jj11"
+        android:duration="20" />
+    <item
+        android:drawable="@mipmap/img_top_loading_jj12"
+        android:duration="20" />
+    <item
+        android:drawable="@mipmap/img_top_loading_jj13"
+        android:duration="20" />
+    <item
+        android:drawable="@mipmap/img_top_loading_jj14"
+        android:duration="20" />
+    <item
+        android:drawable="@mipmap/img_top_loading_jj15"
+        android:duration="20" />
+    <item
+        android:drawable="@mipmap/img_top_loading_jj16"
+        android:duration="20" />
+    <item
+        android:drawable="@mipmap/img_top_loading_jj17"
+        android:duration="20" />
+    <item
+        android:drawable="@mipmap/img_top_loading_jj18"
+        android:duration="20" />
+
+
+
+</animation-list>

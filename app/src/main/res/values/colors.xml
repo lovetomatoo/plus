@@ -8,6 +8,11 @@
 
 
     <color name="red_EB4F38">#EB4F38</color>
+    <color name="bg_layout">#f6fcff</color>
+    <color name="text_01">#FF34373B</color>
+    <color name="text_02">#8034373B</color>
+    <color name="text_03">#4c34373B</color>
+    <color name="recomend_item_line">#E6EDF0</color>s
 
     <color name="red_main">#FF0000</color>
     <color name="white_main">#FFFFFF</color>
