@@ -11,7 +11,7 @@ import android.widget.ListView;
 import com.ghx.app.R;
 
 /**
- * Created by mac on 16/7/13.
+ * Created by guo_hx on 16/9/30.
  */
 public abstract class NewPullLoadMoreListView extends FrameLayout
         implements SuperSwipeRefreshLayout.OnPullRefreshListener, SuperSwipeRefreshLayout.OnPushLoadMoreListener {

@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.ghx.app.lulu.weiget.pullloadmore_listview.AnimatePullLoadMoreListView
+        <com.ghx.app.lulu.weiget.pullloadmore_listview.NewPullLoadMoreListView
             android:background="@color/black_main"
             android:id="@+id/more_list_view"
             android:layout_width="match_parent"
