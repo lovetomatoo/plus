@@ -26,6 +26,11 @@ import com.ghx.app.lulu.weiget.NoScrollViewPager;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ *首页Activity，这里，很重要
+ */
+
 public class MainActivity extends BaseActivity<MainPresenter> implements IMainView {
 
     private long exitTime = 0;
