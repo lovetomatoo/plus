@@ -23,9 +23,9 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
     Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-                if(getActivity()!=null) {
-                    handleMsg(msg);
-                }
+            if (getActivity() != null) {
+                handleMsg(msg);
+            }
         }
     };
     private Topbar mTopbar;
