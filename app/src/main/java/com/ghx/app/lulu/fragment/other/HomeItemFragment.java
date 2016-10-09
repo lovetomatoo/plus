@@ -10,6 +10,7 @@ import com.ghx.app.lulu.adapter.HomeItemRecylerViewAdapter;
 import com.ghx.app.lulu.model.HomeItemRvItemModel;
 import com.ghx.app.lulu.model.LunbotuBean;
 import com.ghx.app.lulu.presenter.HomeItemFragmentPresenter;
+import com.ghx.app.lulu.utils.ToastUtil;
 import com.ghx.app.lulu.view.IHomeItemFragmentView;
 import com.ghx.app.lulu.weiget.autoscroll_viewpager.AutoScrollViewPager;
 import com.ghx.app.lulu.weiget.pullloadmore_recyleview.PullLoadMoreRecyclerView;
@@ -46,9 +47,10 @@ public class HomeItemFragment extends BaseFragment<HomeItemFragmentPresenter> im
 
         mRvPunnLoadMore = (PullLoadMoreRecyclerView) rootView.findViewById(R.id.rv_pull_load_more);
         mRvPunnLoadMore.setGridLayout(2);
-        mPresenter.getItemServerData();
-//        //显示下拉刷新
+        //显示下拉刷新
         mRvPunnLoadMore.setRefreshing(true);
+        //请求数据
+        mPresenter.getItemServerData();
 //        //设置上拉刷新文字
 //        mRvPunnLoadMore.setFooterViewText("loading");
 //        //设置上拉刷新文字颜色
@@ -57,7 +59,7 @@ public class HomeItemFragment extends BaseFragment<HomeItemFragmentPresenter> im
 //        mRvPunnLoadMore.setFooterViewBackgroundColor(R.color.black_main);
 //        mRvPunnLoadMore.setLinearLayout();
 //
-//        mRvPunnLoadMore.setOnPullLoadMoreListener(this);
+        mRvPunnLoadMore.setOnPullLoadMoreListener(this);
 //        //setEmptyView，演示空数据，可以提示“数据加载中”
 //        mRvPunnLoadMore.setEmptyView(LayoutInflater.from(getContext()).inflate(R.layout.empty_view, null));
 ////        mRecyclerViewAdapter = new RecyclerViewAdapter(getActivity());
@@ -92,6 +94,7 @@ public class HomeItemFragment extends BaseFragment<HomeItemFragmentPresenter> im
 
     @Override
     public void onRefresh() {
+        ToastUtil.showToast("onRefresh");
         mRvPunnLoadMore.setRefreshing(true);
         mPresenter.getItemServerData();
     }
