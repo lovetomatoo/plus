@@ -10,7 +10,6 @@ import com.ghx.app.lulu.model.LunbotuBean;
 import com.ghx.app.lulu.presenter.HomeItemFragmentPresenter;
 import com.ghx.app.lulu.utils.ToastUtil;
 import com.ghx.app.lulu.view.IHomeItemFragmentView;
-import com.ghx.app.lulu.weiget.autoscroll_viewpager.AutoScrollViewPager;
 import com.ghx.app.lulu.weiget.pullloadmore_recyleview.PullLoadMoreRecyclerView;
 
 import java.util.ArrayList;
@@ -30,11 +29,13 @@ public class HomeItemFragment extends BaseFragment<HomeItemFragmentPresenter> im
 
     @Override
     protected int getLayoutId() {
+
         return R.layout.fragment_home_item;
     }
 
     @Override
     protected Class<HomeItemFragmentPresenter> getPresenter() {
+
         return HomeItemFragmentPresenter.class;
     }
 
@@ -81,6 +82,7 @@ public class HomeItemFragment extends BaseFragment<HomeItemFragmentPresenter> im
 
     @Override
     public void showAds(LunbotuBean response) {
+
         List<LunbotuBean.LunbotuItemBean> data = response.data;
         mHomeItemRecylerViewAdapter.setAdsData(data);
     }
@@ -89,13 +91,13 @@ public class HomeItemFragment extends BaseFragment<HomeItemFragmentPresenter> im
     public void showItem(HomeItemRvItemModel body) {
 
         mRvPunnLoadMore.setPullLoadMoreCompleted();
-
         mHomeItemRecylerViewAdapter.setData(body.data);
         mRvPunnLoadMore.setRefreshing(false);
     }
 
     @Override
     public void onRefresh() {
+
         ToastUtil.showToast("onRefresh");
         mRvPunnLoadMore.setRefreshing(true);
         mHomeItemRecylerViewAdapter.clearData();
@@ -104,6 +106,7 @@ public class HomeItemFragment extends BaseFragment<HomeItemFragmentPresenter> im
 
     @Override
     public void onLoadMore() {
+
         ToastUtil.showToast("onLoadMore");
         mPresenter.getItemServerData();
     }
