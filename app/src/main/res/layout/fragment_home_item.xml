@@ -4,10 +4,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.ghx.app.lulu.weiget.autoscroll_viewpager.AutoScrollViewPager
+   <!-- <com.ghx.app.lulu.weiget.autoscroll_viewpager.AutoScrollViewPager
         android:id="@+id/vp_auto"
         android:layout_width="match_parent"
-        android:layout_height="180dp"/>
+        android:layout_height="180dp"/>-->
 
     <com.ghx.app.lulu.weiget.pullloadmore_recyleview.PullLoadMoreRecyclerView
         android:id="@+id/rv_pull_load_more"

@@ -1,7 +1,5 @@
 package com.ghx.app.lulu.fragment.other;
 
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
 
 import com.ghx.app.R;
@@ -27,8 +25,9 @@ public class HomeItemFragment extends BaseFragment<HomeItemFragmentPresenter> im
     List<String> mPicUrlList = new ArrayList<>();
 
     private String mFlag;
-    private AutoScrollViewPager mVpAuto;
+//    private AutoScrollViewPager mVpAuto;
     private PullLoadMoreRecyclerView mRvPunnLoadMore;
+    private HomeItemRecylerViewAdapter mHomeItemRecylerViewAdapter;
 
     @Override
     protected int getLayoutId() {
@@ -43,7 +42,7 @@ public class HomeItemFragment extends BaseFragment<HomeItemFragmentPresenter> im
     @Override
     protected void initAllWidget(View rootView) {
 
-        mVpAuto = (AutoScrollViewPager) rootView.findViewById(R.id.vp_auto);
+//        mVpAuto = (AutoScrollViewPager) rootView.findViewById(R.id.vp_auto);
 
         mRvPunnLoadMore = (PullLoadMoreRecyclerView) rootView.findViewById(R.id.rv_pull_load_more);
         mRvPunnLoadMore.setGridLayout(2);
@@ -58,13 +57,16 @@ public class HomeItemFragment extends BaseFragment<HomeItemFragmentPresenter> im
 //        //设置加载更多背景色
 //        mRvPunnLoadMore.setFooterViewBackgroundColor(R.color.black_main);
 //        mRvPunnLoadMore.setLinearLayout();
-//
+
         mRvPunnLoadMore.setOnPullLoadMoreListener(this);
-//        //setEmptyView，演示空数据，可以提示“数据加载中”
+//        //setEmptyView，演示空数据，可以提示“数据加载中”-
 //        mRvPunnLoadMore.setEmptyView(LayoutInflater.from(getContext()).inflate(R.layout.empty_view, null));
 ////        mRecyclerViewAdapter = new RecyclerViewAdapter(getActivity());
 ////        mPullLoadMoreRecyclerView.setAdapter(mRecyclerViewAdapter);
 ////        getData();
+
+        mHomeItemRecylerViewAdapter = new HomeItemRecylerViewAdapter(getActivity());
+        mRvPunnLoadMore.setAdapter(mHomeItemRecylerViewAdapter);
     }
 
     @Override
@@ -80,15 +82,16 @@ public class HomeItemFragment extends BaseFragment<HomeItemFragmentPresenter> im
     @Override
     public void showAds(LunbotuBean response) {
         List<LunbotuBean.LunbotuItemBean> data = response.data;
-        mVpAuto.setPhotoData(data);
-        mVpAuto.setBorderAnimation(false);
+//        mVpAuto.setPhotoData(data);
+//        mVpAuto.setBorderAnimation(false);
     }
 
     @Override
     public void showItem(HomeItemRvItemModel body) {
 
-        HomeItemRecylerViewAdapter homeItemRecylerViewAdapter = new HomeItemRecylerViewAdapter(getActivity(), body.data);
-        mRvPunnLoadMore.setAdapter(homeItemRecylerViewAdapter);
+        mRvPunnLoadMore.setPullLoadMoreCompleted();
+
+        mHomeItemRecylerViewAdapter.setData(body.data);
         mRvPunnLoadMore.setRefreshing(false);
     }
 
@@ -96,11 +99,15 @@ public class HomeItemFragment extends BaseFragment<HomeItemFragmentPresenter> im
     public void onRefresh() {
         ToastUtil.showToast("onRefresh");
         mRvPunnLoadMore.setRefreshing(true);
+        mHomeItemRecylerViewAdapter.clearData();
         mPresenter.getItemServerData();
     }
 
     @Override
     public void onLoadMore() {
+        ToastUtil.showToast("onLoadMore");
         mPresenter.getItemServerData();
     }
+
+
 }

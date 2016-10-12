@@ -22,9 +22,8 @@ public class HomeItemRecylerViewAdapter extends RecyclerView.Adapter<HomeItemRec
     private Context mContext;
     private List<HomeItemRvItemModel.DataBean> mList;
 
-    public HomeItemRecylerViewAdapter(Context context, List<HomeItemRvItemModel.DataBean> list) {
+    public HomeItemRecylerViewAdapter(Context context) {
         mContext = context;
-        mList = list;
     }
 
     @Override
@@ -41,6 +40,15 @@ public class HomeItemRecylerViewAdapter extends RecyclerView.Adapter<HomeItemRec
     @Override
     public int getItemCount() {
         return mList == null ? 0 : mList.size();
+    }
+
+    public void setData(List<HomeItemRvItemModel.DataBean> list) {
+        mList = list;
+        notifyDataSetChanged();
+    }
+
+    public void clearData() {
+        mList.clear();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
