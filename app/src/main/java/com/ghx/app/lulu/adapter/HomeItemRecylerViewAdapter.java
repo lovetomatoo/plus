@@ -10,6 +10,9 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.ghx.app.R;
 import com.ghx.app.lulu.model.HomeItemRvItemModel;
+import com.ghx.app.lulu.model.LunbotuBean;
+import com.ghx.app.lulu.utils.LogUtil;
+import com.ghx.app.lulu.weiget.autoscroll_viewpager.AutoScrollViewPager;
 
 import java.util.List;
 
@@ -20,7 +23,12 @@ import java.util.List;
 public class HomeItemRecylerViewAdapter extends RecyclerView.Adapter<HomeItemRecylerViewAdapter.ViewHolder> {
 
     private Context mContext;
+
+    private int TYPE_HEAD = 0;
+    private int TYPE_ITEM = 1;
+
     private List<HomeItemRvItemModel.DataBean> mList;
+    private List<LunbotuBean.LunbotuItemBean> mAsData;
 
     public HomeItemRecylerViewAdapter(Context context) {
         mContext = context;
@@ -28,18 +36,37 @@ public class HomeItemRecylerViewAdapter extends RecyclerView.Adapter<HomeItemRec
 
     @Override
     public HomeItemRecylerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(View.inflate(parent.getContext(), R.layout.item_recyleview_homeitem, null));
+
+        LogUtil.i_log("viewType == " + viewType + "");
+
+        return viewType == TYPE_HEAD ? new ViewHolder(View.inflate(parent.getContext(), R.layout.item_head_fraghome_viewpager, null))
+                : new ViewHolder(View.inflate(parent.getContext(), R.layout.item_recyleview_homeitem, null));
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+
+        return position == 0 ? TYPE_HEAD : TYPE_ITEM;
     }
 
     @Override
     public void onBindViewHolder(HomeItemRecylerViewAdapter.ViewHolder holder, int position) {
         // onBindViewHolder ____填充View
-        Glide.with(mContext).load(mList.get(position).room_src).into(holder.mIvPic);
+        if (position == 0) {
+            holder.mVpAuto.setPhotoData(mAsData);
+            holder.mVpAuto.setBorderAnimation(false);
+        } else {
+            Glide.with(mContext).load(mList.get(position - 1).room_src).into(holder.mIvPic);
+            holder.mTvName.setText(mList.get(position - 1).nickname);
+            holder.mTvPersonNumber.setText(mList.get(position - 1).online + "");
+            holder.mTvTitle.setText(mList.get(position - 1).room_name);
+        }
+
     }
 
     @Override
     public int getItemCount() {
-        return mList == null ? 0 : mList.size();
+        return mList == null ? 0 : mList.size() + 1;
     }
 
     public void setData(List<HomeItemRvItemModel.DataBean> list) {
@@ -51,8 +78,15 @@ public class HomeItemRecylerViewAdapter extends RecyclerView.Adapter<HomeItemRec
         mList.clear();
     }
 
+    public void setAdsData(List<LunbotuBean.LunbotuItemBean> data) {
+
+        mAsData = data;
+    }
+
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
+        AutoScrollViewPager mVpAuto;
         ImageView mIvPic;
         TextView mTvName;
         TextView mTvPersonNumber;
@@ -65,6 +99,8 @@ public class HomeItemRecylerViewAdapter extends RecyclerView.Adapter<HomeItemRec
             mTvName = (TextView) itemView.findViewById(R.id.tv_name);
             mTvPersonNumber = (TextView) itemView.findViewById(R.id.tv_person_number);
             mTvTitle = (TextView) itemView.findViewById(R.id.tv_title);
+
+            mVpAuto = (AutoScrollViewPager) itemView.findViewById(R.id.vp_auto);
 
         }
     }

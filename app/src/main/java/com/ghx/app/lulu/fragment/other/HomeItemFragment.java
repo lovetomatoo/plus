@@ -25,7 +25,6 @@ public class HomeItemFragment extends BaseFragment<HomeItemFragmentPresenter> im
     List<String> mPicUrlList = new ArrayList<>();
 
     private String mFlag;
-//    private AutoScrollViewPager mVpAuto;
     private PullLoadMoreRecyclerView mRvPunnLoadMore;
     private HomeItemRecylerViewAdapter mHomeItemRecylerViewAdapter;
 
@@ -67,6 +66,7 @@ public class HomeItemFragment extends BaseFragment<HomeItemFragmentPresenter> im
 
         mHomeItemRecylerViewAdapter = new HomeItemRecylerViewAdapter(getActivity());
         mRvPunnLoadMore.setAdapter(mHomeItemRecylerViewAdapter);
+
     }
 
     @Override
@@ -82,8 +82,7 @@ public class HomeItemFragment extends BaseFragment<HomeItemFragmentPresenter> im
     @Override
     public void showAds(LunbotuBean response) {
         List<LunbotuBean.LunbotuItemBean> data = response.data;
-//        mVpAuto.setPhotoData(data);
-//        mVpAuto.setBorderAnimation(false);
+        mHomeItemRecylerViewAdapter.setAdsData(data);
     }
 
     @Override
