@@ -27,7 +27,9 @@ public class HomeItemFragment extends BaseFragment<HomeItemFragmentPresenter> im
     List<String> mPicUrlList = new ArrayList<>();
 
     private String mFlag;
-    private PullLoadMoreRecyclerView mRvPunnLoadMore;
+    private int index = 0;
+
+    private PullLoadMoreRecyclerView mRvPullLoadMore;
     private HomeItemRecylerViewAdapter mHomeItemRecylerViewAdapter;
     private RecyclerViewHeader mRvHead;
     private AutoScrollViewPager mVpAuto;
@@ -47,32 +49,33 @@ public class HomeItemFragment extends BaseFragment<HomeItemFragmentPresenter> im
     @Override
     protected void initAllWidget(View rootView) {
 
-        mVpAuto = (AutoScrollViewPager)rootView.findViewById(R.id.vp_auto);
-        mRvPunnLoadMore = (PullLoadMoreRecyclerView) rootView.findViewById(R.id.rv_pull_load_more);
-        mRvHead = (RecyclerViewHeader)rootView.findViewById(R.id.rv_head);
-        RecyclerView recyclerView = mRvPunnLoadMore.getRecyclerView();
-        mRvPunnLoadMore.setGridLayout(2);
+        mVpAuto = (AutoScrollViewPager) rootView.findViewById(R.id.vp_auto);
+        mRvPullLoadMore = (PullLoadMoreRecyclerView) rootView.findViewById(R.id.rv_pull_load_more);
+        mRvHead = (RecyclerViewHeader) rootView.findViewById(R.id.rv_head);
+        RecyclerView recyclerView = mRvPullLoadMore.getRecyclerView();
+        mRvPullLoadMore.setGridLayout(2);
         //显示下拉刷新
-        mRvPunnLoadMore.setRefreshing(true);
+        mRvPullLoadMore.setRefreshing(true);
         //请求数据
-        mPresenter.getItemServerData();
+        mPresenter.getItemServerData(index);
+        mPresenter.getAdsServerData();
 //        //设置上拉刷新文字
-//        mRvPunnLoadMore.setFooterViewText("loading");
+//        mRvPullLoadMore.setFooterViewText("loading");
 //        //设置上拉刷新文字颜色
-//        mRvPunnLoadMore.setFooterViewTextColor(R.color.white_main);
+//        mRvPullLoadMore.setFooterViewTextColor(R.color.white_main);
 //        //设置加载更多背景色
-//        mRvPunnLoadMore.setFooterViewBackgroundColor(R.color.black_main);
-//        mRvPunnLoadMore.setLinearLayout();
+//        mRvPullLoadMore.setFooterViewBackgroundColor(R.color.black_main);
+//        mRvPullLoadMore.setLinearLayout();
 
-        mRvPunnLoadMore.setOnPullLoadMoreListener(this);
+        mRvPullLoadMore.setOnPullLoadMoreListener(this);
 //        //setEmptyView，演示空数据，可以提示“数据加载中”-
-//        mRvPunnLoadMore.setEmptyView(LayoutInflater.from(getContext()).inflate(R.layout.empty_view, null));
+//        mRvPullLoadMore.setEmptyView(LayoutInflater.from(getContext()).inflate(R.layout.empty_view, null));
 ////        mRecyclerViewAdapter = new RecyclerViewAdapter(getActivity());
 ////        mPullLoadMoreRecyclerView.setAdapter(mRecyclerViewAdapter);
 ////        getData();
 
         mHomeItemRecylerViewAdapter = new HomeItemRecylerViewAdapter(getActivity());
-        mRvPunnLoadMore.setAdapter(mHomeItemRecylerViewAdapter);
+        mRvPullLoadMore.setAdapter(mHomeItemRecylerViewAdapter);
         mRvHead.attachTo(recyclerView);
 
     }
@@ -100,25 +103,35 @@ public class HomeItemFragment extends BaseFragment<HomeItemFragmentPresenter> im
     @Override
     public void showItem(HomeItemRvItemModel body) {
 
-        mRvPunnLoadMore.setPullLoadMoreCompleted();
-        mHomeItemRecylerViewAdapter.setData(body.data);
-        mRvPunnLoadMore.setRefreshing(false);
+        mRvPullLoadMore.setPullLoadMoreCompleted();
+        if (index == 0) {
+
+            mHomeItemRecylerViewAdapter.setData(body.data);
+        }else {
+            mHomeItemRecylerViewAdapter.addAllData(body.data);
+        }
+
+        mRvPullLoadMore.setRefreshing(false);
     }
 
     @Override
     public void onRefresh() {
-
+        index = 0;
         ToastUtil.showToast("onRefresh");
-        mRvPunnLoadMore.setRefreshing(true);
-        mHomeItemRecylerViewAdapter.clearData();
-        mPresenter.getItemServerData();
+        mRvPullLoadMore.setRefreshing(true);
+        mPresenter.getItemServerData(index);
+        mPresenter.getAdsServerData();
     }
 
     @Override
     public void onLoadMore() {
 
         ToastUtil.showToast("onLoadMore");
-        mPresenter.getItemServerData();
+        mPresenter.getItemServerData(index++);
+    }
+
+    public PullLoadMoreRecyclerView getmRvPullLoadMore() {
+        return mRvPullLoadMore;
     }
 
 

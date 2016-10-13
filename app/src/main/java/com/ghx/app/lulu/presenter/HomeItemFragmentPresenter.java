@@ -37,18 +37,16 @@ public class HomeItemFragmentPresenter extends BasePresenter<IHomeItemFragmentVi
     public void viewShow() {
         super.viewShow();
 
-        //请求数据
-        getAdsServerData();
     }
 
     //http://capi.douyucdn.cn/api/v1/slide/6?version=2.301&client_sys=android
     public interface LunbotuService {
+
         @GET("6")
         Call<LunbotuBean> getDouyuLunbotu(@Query("version") String version, @Query("client_sys") String client_sys);
-
     }
 
-    private void getAdsServerData() {
+    public void getAdsServerData() {
 
         String baseUrl = "http://capi.douyucdn.cn/api/v1/slide/";
 
@@ -63,12 +61,14 @@ public class HomeItemFragmentPresenter extends BasePresenter<IHomeItemFragmentVi
         call.enqueue(new Callback<LunbotuBean>() {
             @Override
             public void onResponse(Call<LunbotuBean> call, Response<LunbotuBean> response) {
+
                 LogUtil.i_log(response.body().toString());
                 iView.showAds(response.body());
             }
 
             @Override
             public void onFailure(Call<LunbotuBean> call, Throwable t) {
+
                 String s = t.getMessage();
                 LogUtil.i_log(s);
             }
@@ -78,12 +78,12 @@ public class HomeItemFragmentPresenter extends BasePresenter<IHomeItemFragmentVi
     //http://capi.douyucdn.cn/api/v1/live?offset=0&limit=20&client_sys=android
     public interface ItemDataService {
         @GET("live")
-        Call<HomeItemRvItemModel> getItemData(@Query("offset") String offset, @Query("limit") String limit, @Query("client_sys") String client_sys);
+        Call<HomeItemRvItemModel> getItemData(@Query("offset") int offset, @Query("limit") String limit, @Query("client_sys") String client_sys);
 
     }
 
 
-    public void getItemServerData() {
+    public void getItemServerData(int index) {
         String baseUrl = "http://capi.douyucdn.cn/api/v1/";
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -92,7 +92,7 @@ public class HomeItemFragmentPresenter extends BasePresenter<IHomeItemFragmentVi
                 .build();
 
         ItemDataService itemDataService = retrofit.create(ItemDataService.class);
-        Call<HomeItemRvItemModel> call = itemDataService.getItemData("0", "20", "android");
+        Call<HomeItemRvItemModel> call = itemDataService.getItemData(index, "20", "android");
 
         call.enqueue(new Callback<HomeItemRvItemModel>() {
             @Override

@@ -29,14 +29,14 @@ public class HomeViewPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        if (position == 0) {
+//        if (position == 0) {
             HomeItemFragment homeItemFragment = new HomeItemFragment();
             homeItemFragment.setFlag(mList.get(position).id);
             LogUtil.i_log("new HomeItemFragment()");
             return homeItemFragment;
-        } else {
-            return new FourthFragment();
-        }
+//        } else {
+//            return new HomeItemFragment();
+//        }
 
     }
 

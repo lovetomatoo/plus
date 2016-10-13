@@ -2,6 +2,7 @@ package com.ghx.app.lulu.activity;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -106,7 +107,20 @@ public class MainActivity extends BaseActivity<MainPresenter> implements IMainVi
         }
     }
 
-
+    @Override
+    protected void setStatus() {
+        super.setStatus();
+           if (Build.VERSION.SDK_INT >= 21) {
+            View decorView = getWindow().getDecorView();
+            int options =
+                    //这个属性，加上以后，状态栏会消失，可以在状态栏区域下滑，将状态栏划出来，
+//                    View.SYSTEM_UI_FLAG_FULLSCREEN |
+                            View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+            decorView.setSystemUiVisibility(options);
+            //设置状态栏的_背景颜色_为透明__实现所谓的沉浸式状态栏
+            getWindow().setStatusBarColor(getResources().getColor(R.color.main_color));
+        }
+    }
 
     //两次Back退出应用
     @Override

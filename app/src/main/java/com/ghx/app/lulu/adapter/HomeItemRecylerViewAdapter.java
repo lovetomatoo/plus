@@ -14,6 +14,7 @@ import com.ghx.app.lulu.model.LunbotuBean;
 import com.ghx.app.lulu.utils.LogUtil;
 import com.ghx.app.lulu.weiget.autoscroll_viewpager.AutoScrollViewPager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,7 +25,7 @@ public class HomeItemRecylerViewAdapter extends RecyclerView.Adapter<HomeItemRec
 
     private Context mContext;
 
-    private List<HomeItemRvItemModel.DataBean> mList;
+    private List<HomeItemRvItemModel.DataBean> mList = new ArrayList<>();
 
     public HomeItemRecylerViewAdapter(Context context) {
         mContext = context;
@@ -54,14 +55,15 @@ public class HomeItemRecylerViewAdapter extends RecyclerView.Adapter<HomeItemRec
     }
 
     public void setData(List<HomeItemRvItemModel.DataBean> list) {
-        mList = list;
+        mList.clear();
+        mList.addAll(list);
         notifyDataSetChanged();
     }
 
-    public void clearData() {
-        mList.clear();
+    public void addAllData(List<HomeItemRvItemModel.DataBean> data) {
+        mList.addAll(data);
+        notifyDataSetChanged();
     }
-
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 

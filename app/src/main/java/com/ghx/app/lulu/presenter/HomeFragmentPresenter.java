@@ -40,7 +40,7 @@ public class HomeFragmentPresenter extends BasePresenter<IHomeFragmentView> {
         for (int i = 0; i < 5; i++) {
             HomeViewPagerBean homeViewPagerBean = new HomeViewPagerBean();
             homeViewPagerBean.id = "id = " + i;
-            homeViewPagerBean.title = "tit = " + i;
+            homeViewPagerBean.title = "英雄联盟";
             homeViewPagerBean.pic_url = "pic_url = " + i;
             mList.add(homeViewPagerBean);
         }

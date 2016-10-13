@@ -14,6 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ghx.app.R;
+import com.ghx.app.lulu.utils.ToastUtil;
 
 /**
  * Created by guo_hx on 2016/9/23.11:34
@@ -32,6 +33,8 @@ public class Topbar extends RelativeLayout implements View.OnClickListener {
     TextView txt_title;
     TextView txt_btn_right;
     ImageView img_right;
+    private On2ClickListener twoClickListener;
+    private long exitTime;
     //顶部一些控件 end
 
     public Topbar(Context context) {
@@ -60,7 +63,9 @@ public class Topbar extends RelativeLayout implements View.OnClickListener {
         txt_title = (TextView) findViewById(R.id.txt_title);
         img_right = (ImageView) findViewById(R.id.img_right);
         txt_btn_right = (TextView) findViewById(R.id.txt_btn_right);
+
         txt_btn_back.setOnClickListener(this);
+        setOnClickListener(this);
 
         if(!TextUtils.isEmpty(str_title)) {
             txt_title.setText("" + str_title);
@@ -118,6 +123,12 @@ public class Topbar extends RelativeLayout implements View.OnClickListener {
         img_right.setOnClickListener(listener);
         txt_btn_right.setOnClickListener(listener);
     }
+
+    public void setOnTopbar2ClickListener(On2ClickListener listener) {
+        twoClickListener = listener;
+    }
+
+
     public int getRightTxtId()
     {
         return R.id.txt_btn_right;
@@ -138,12 +149,18 @@ public class Topbar extends RelativeLayout implements View.OnClickListener {
             case R.id.txt_btn_back: {
                 if (context instanceof Activity) {
 
-                    //避免bug  代码需要加判断  而不是用try 来逃避bug
                     if (!((Activity) context).isFinishing())
                         ((Activity) context).finish();
                 }
             }
             break;
+            default: {
+                if ((System.currentTimeMillis() - exitTime) > 1000) {
+                    exitTime = System.currentTimeMillis();
+                } else {
+                    twoClickListener.setOn2ClickListener();
+                }
+            }
         }
     }
 
@@ -155,6 +172,10 @@ public class Topbar extends RelativeLayout implements View.OnClickListener {
             return true;
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    public interface On2ClickListener {
+        void setOn2ClickListener();
     }
 
 }
