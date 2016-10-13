@@ -24,11 +24,7 @@ public class HomeItemRecylerViewAdapter extends RecyclerView.Adapter<HomeItemRec
 
     private Context mContext;
 
-    private int TYPE_HEAD = 0;
-    private int TYPE_ITEM = 1;
-
     private List<HomeItemRvItemModel.DataBean> mList;
-    private List<LunbotuBean.LunbotuItemBean> mAsData;
 
     public HomeItemRecylerViewAdapter(Context context) {
         mContext = context;
@@ -39,34 +35,22 @@ public class HomeItemRecylerViewAdapter extends RecyclerView.Adapter<HomeItemRec
 
         LogUtil.i_log("viewType == " + viewType + "");
 
-        return viewType == TYPE_HEAD ? new ViewHolder(View.inflate(parent.getContext(), R.layout.item_head_fraghome_viewpager, null))
-                : new ViewHolder(View.inflate(parent.getContext(), R.layout.item_recyleview_homeitem, null));
-    }
-
-    @Override
-    public int getItemViewType(int position) {
-
-        return position == 0 ? TYPE_HEAD : TYPE_ITEM;
+        return new ViewHolder(View.inflate(parent.getContext(), R.layout.item_recyleview_homeitem, null));
     }
 
     @Override
     public void onBindViewHolder(HomeItemRecylerViewAdapter.ViewHolder holder, int position) {
-        // onBindViewHolder ____填充View
-        if (position == 0) {
-            holder.mVpAuto.setPhotoData(mAsData);
-            holder.mVpAuto.setBorderAnimation(false);
-        } else {
-            Glide.with(mContext).load(mList.get(position - 1).room_src).into(holder.mIvPic);
-            holder.mTvName.setText(mList.get(position - 1).nickname);
-            holder.mTvPersonNumber.setText(mList.get(position - 1).online + "");
-            holder.mTvTitle.setText(mList.get(position - 1).room_name);
-        }
 
+        // onBindViewHolder ____填充View
+        Glide.with(mContext).load(mList.get(position).room_src).into(holder.mIvPic);
+        holder.mTvName.setText(mList.get(position).nickname);
+        holder.mTvPersonNumber.setText(mList.get(position).online + "");
+        holder.mTvTitle.setText(mList.get(position).room_name);
     }
 
     @Override
     public int getItemCount() {
-        return mList == null ? 0 : mList.size() + 1;
+        return mList == null ? 0 : mList.size();
     }
 
     public void setData(List<HomeItemRvItemModel.DataBean> list) {
@@ -76,11 +60,6 @@ public class HomeItemRecylerViewAdapter extends RecyclerView.Adapter<HomeItemRec
 
     public void clearData() {
         mList.clear();
-    }
-
-    public void setAdsData(List<LunbotuBean.LunbotuItemBean> data) {
-
-        mAsData = data;
     }
 
 

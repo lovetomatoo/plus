@@ -1,5 +1,6 @@
 package com.ghx.app.lulu.fragment.other;
 
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.ghx.app.R;
@@ -10,7 +11,9 @@ import com.ghx.app.lulu.model.LunbotuBean;
 import com.ghx.app.lulu.presenter.HomeItemFragmentPresenter;
 import com.ghx.app.lulu.utils.ToastUtil;
 import com.ghx.app.lulu.view.IHomeItemFragmentView;
+import com.ghx.app.lulu.weiget.autoscroll_viewpager.AutoScrollViewPager;
 import com.ghx.app.lulu.weiget.pullloadmore_recyleview.PullLoadMoreRecyclerView;
+import com.ghx.app.lulu.weiget.pullloadmore_recyleview.RecyclerViewHeader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +29,8 @@ public class HomeItemFragment extends BaseFragment<HomeItemFragmentPresenter> im
     private String mFlag;
     private PullLoadMoreRecyclerView mRvPunnLoadMore;
     private HomeItemRecylerViewAdapter mHomeItemRecylerViewAdapter;
+    private RecyclerViewHeader mRvHead;
+    private AutoScrollViewPager mVpAuto;
 
     @Override
     protected int getLayoutId() {
@@ -42,9 +47,10 @@ public class HomeItemFragment extends BaseFragment<HomeItemFragmentPresenter> im
     @Override
     protected void initAllWidget(View rootView) {
 
-//        mVpAuto = (AutoScrollViewPager) rootView.findViewById(R.id.vp_auto);
-
+        mVpAuto = (AutoScrollViewPager)rootView.findViewById(R.id.vp_auto);
         mRvPunnLoadMore = (PullLoadMoreRecyclerView) rootView.findViewById(R.id.rv_pull_load_more);
+        mRvHead = (RecyclerViewHeader)rootView.findViewById(R.id.rv_head);
+        RecyclerView recyclerView = mRvPunnLoadMore.getRecyclerView();
         mRvPunnLoadMore.setGridLayout(2);
         //显示下拉刷新
         mRvPunnLoadMore.setRefreshing(true);
@@ -67,6 +73,7 @@ public class HomeItemFragment extends BaseFragment<HomeItemFragmentPresenter> im
 
         mHomeItemRecylerViewAdapter = new HomeItemRecylerViewAdapter(getActivity());
         mRvPunnLoadMore.setAdapter(mHomeItemRecylerViewAdapter);
+        mRvHead.attachTo(recyclerView);
 
     }
 
@@ -84,7 +91,10 @@ public class HomeItemFragment extends BaseFragment<HomeItemFragmentPresenter> im
     public void showAds(LunbotuBean response) {
 
         List<LunbotuBean.LunbotuItemBean> data = response.data;
-        mHomeItemRecylerViewAdapter.setAdsData(data);
+
+        mVpAuto.setPhotoData(data);
+        mVpAuto.setBorderAnimation(false);
+
     }
 
     @Override
