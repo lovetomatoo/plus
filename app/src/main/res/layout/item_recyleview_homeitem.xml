@@ -8,14 +8,17 @@
     <RelativeLayout
         android:id="@+id/rl_container"
         android:layout_width="150dp"
-        android:layout_height="100dp">
+        android:layout_height="96dp">
 
         <ImageView
+            android:src="@mipmap/ic_launcher"
             android:id="@+id/iv_pic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="match_parent"
+            android:layout_height="96dp" />
 
         <TextView
+            android:drawableLeft="@mipmap/ic_player_content_number"
+            android:background="@drawable/corner_live_num_bg"
             android:id="@+id/tv_person_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -24,6 +27,9 @@
             android:textSize="10sp" />
 
         <TextView
+            android:background="#EEEEEE"
+            android:textSize="12sp"
+            android:textColor="@color/white_main"
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

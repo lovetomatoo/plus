@@ -1,5 +1,6 @@
 package com.ghx.app.lulu.presenter;
 
+import android.database.Observable;
 import android.os.Bundle;
 import android.os.Message;
 
@@ -13,9 +14,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
+import rx.Subscriber;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by guo_hx on 2016/9/26.17:12
@@ -43,7 +47,7 @@ public class HomeItemFragmentPresenter extends BasePresenter<IHomeItemFragmentVi
     public interface LunbotuService {
 
         @GET("6")
-        Call<LunbotuBean> getDouyuLunbotu(@Query("version") String version, @Query("client_sys") String client_sys);
+        Observable<LunbotuBean> getDouyuLunbotu(@Query("version") String version, @Query("client_sys") String client_sys);
     }
 
     public void getAdsServerData() {
@@ -53,12 +57,14 @@ public class HomeItemFragmentPresenter extends BasePresenter<IHomeItemFragmentVi
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
 
         LunbotuService lunbotuService = retrofit.create(LunbotuService.class);
-        Call<LunbotuBean> call = lunbotuService.getDouyuLunbotu("2.301", "android");
 
-        call.enqueue(new Callback<LunbotuBean>() {
+//        Observable<LunbotuBean> call = lunbotuService.getDouyuLunbotu("2.301", "android");
+
+        /*call.enqueue(new Callback<LunbotuBean>() {
             @Override
             public void onResponse(Call<LunbotuBean> call, Response<LunbotuBean> response) {
 
@@ -70,9 +76,17 @@ public class HomeItemFragmentPresenter extends BasePresenter<IHomeItemFragmentVi
             public void onFailure(Call<LunbotuBean> call, Throwable t) {
 
                 String s = t.getMessage();
-                LogUtil.i_log(s);
+                LogUtil.i_log(s + "");
             }
-        });
+        });*/
+
+        lunbotuService.getDouyuLunbotu("2.301", "android")
+                
+
+
+
+
+
     }
 
     //http://capi.douyucdn.cn/api/v1/live?offset=0&limit=20&client_sys=android
@@ -105,7 +119,7 @@ public class HomeItemFragmentPresenter extends BasePresenter<IHomeItemFragmentVi
             @Override
             public void onFailure(Call<HomeItemRvItemModel> call, Throwable t) {
                 String s = t.getMessage();
-                LogUtil.i_log(s);
+                LogUtil.i_log(s + "");
             }
         });
     }

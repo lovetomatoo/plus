@@ -417,8 +417,8 @@ public class AutoScrollViewPager extends ViewPager {
             String url = photolist.get(i).pic_url;
 
             ImageView img = new ImageView(context);
-            LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT);
-            img.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            img.setScaleType(ImageView.ScaleType.FIT_XY);
             img.setLayoutParams(param);
             ImageLoadUtil.LoadImage(context, url, img);
 
