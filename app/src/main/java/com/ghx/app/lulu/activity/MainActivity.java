@@ -66,7 +66,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements IMainVi
         BitmapDrawable drawable = (BitmapDrawable) getResources().getDrawable(R.mipmap.love_first);
         Bitmap bitmap = drawable.getBitmap();
         Bitmap blur = FastBlurUtil.toBlur(bitmap, 4);
-        mIvFuceng.setImageBitmap(blur);
+//        mIvFuceng.setImageBitmap(blur);
         mIvFuceng.setOnClickListener(this);
 
         mViewPager.setAdapter(new MainViewPagerAdapter(getSupportFragmentManager(), mList));

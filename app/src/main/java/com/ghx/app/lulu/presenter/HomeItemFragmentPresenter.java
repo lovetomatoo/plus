@@ -1,24 +1,23 @@
 package com.ghx.app.lulu.presenter;
 
-import android.database.Observable;
 import android.os.Bundle;
 import android.os.Message;
 
 import com.ghx.app.base.BasePresenter;
+import com.ghx.app.lulu.http.base.HttpTool;
 import com.ghx.app.lulu.model.HomeItemRvItemModel;
 import com.ghx.app.lulu.model.LunbotuBean;
-import com.ghx.app.lulu.utils.LogUtil;
+import com.ghx.app.lulu.utils.ToastUtil;
 import com.ghx.app.lulu.view.IHomeItemFragmentView;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
+import rx.Observable;
 import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
@@ -39,63 +38,37 @@ public class HomeItemFragmentPresenter extends BasePresenter<IHomeItemFragmentVi
 
     @Override
     public void viewShow() {
+
         super.viewShow();
-
     }
 
-    //http://capi.douyucdn.cn/api/v1/slide/6?version=2.301&client_sys=android
-    public interface LunbotuService {
-
-        @GET("6")
-        Observable<LunbotuBean> getDouyuLunbotu(@Query("version") String version, @Query("client_sys") String client_sys);
-    }
 
     public void getAdsServerData() {
 
-        String baseUrl = "http://capi.douyucdn.cn/api/v1/slide/";
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(baseUrl)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .build();
-
-        LunbotuService lunbotuService = retrofit.create(LunbotuService.class);
-
-//        Observable<LunbotuBean> call = lunbotuService.getDouyuLunbotu("2.301", "android");
-
-        /*call.enqueue(new Callback<LunbotuBean>() {
+        HttpTool.getInstance().getAdsServerData(new Subscriber<LunbotuBean>() {
             @Override
-            public void onResponse(Call<LunbotuBean> call, Response<LunbotuBean> response) {
-
-                LogUtil.i_log(response.body().toString());
-                iView.showAds(response.body());
+            public void onCompleted() {
+                ToastUtil.showToast("getAdsServerData-----onCompleted");
             }
 
             @Override
-            public void onFailure(Call<LunbotuBean> call, Throwable t) {
+            public void onError(Throwable e) {
 
-                String s = t.getMessage();
-                LogUtil.i_log(s + "");
             }
-        });*/
 
-        lunbotuService.getDouyuLunbotu("2.301", "android")
-                
-
-
-
-
-
+            @Override
+            public void onNext(LunbotuBean lunbotuBean) {
+                iView.showAds(lunbotuBean);
+            }
+        }, "2.301", "android");
     }
 
     //http://capi.douyucdn.cn/api/v1/live?offset=0&limit=20&client_sys=android
     public interface ItemDataService {
+
         @GET("live")
-        Call<HomeItemRvItemModel> getItemData(@Query("offset") int offset, @Query("limit") String limit, @Query("client_sys") String client_sys);
-
+        Observable<HomeItemRvItemModel> getItemData(@Query("offset") int offset, @Query("limit") String limit, @Query("client_sys") String client_sys);
     }
-
 
     public void getItemServerData(int index) {
         String baseUrl = "http://capi.douyucdn.cn/api/v1/";
@@ -103,12 +76,33 @@ public class HomeItemFragmentPresenter extends BasePresenter<IHomeItemFragmentVi
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
 
         ItemDataService itemDataService = retrofit.create(ItemDataService.class);
-        Call<HomeItemRvItemModel> call = itemDataService.getItemData(index, "20", "android");
+        itemDataService.getItemData(index, "20", "android")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<HomeItemRvItemModel>() {
+                    @Override
+                    public void onCompleted() {
 
-        call.enqueue(new Callback<HomeItemRvItemModel>() {
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(HomeItemRvItemModel homeItemRvItemModel) {
+                        iView.showItem(homeItemRvItemModel);
+                    }
+                });
+
+
+
+        /*call.enqueue(new Callback<HomeItemRvItemModel>() {
             @Override
             public void onResponse(Call<HomeItemRvItemModel> call, Response<HomeItemRvItemModel> response) {
                 LogUtil.i_log(response.body().toString());
@@ -121,7 +115,7 @@ public class HomeItemFragmentPresenter extends BasePresenter<IHomeItemFragmentVi
                 String s = t.getMessage();
                 LogUtil.i_log(s + "");
             }
-        });
+        });*/
     }
 
 }
