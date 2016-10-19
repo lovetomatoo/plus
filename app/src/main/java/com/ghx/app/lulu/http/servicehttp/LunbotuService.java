@@ -19,6 +19,6 @@ import rx.Observable;
 public interface LunbotuService {
 
     @GET("6")
-    Observable<BaseRequest<List<LunbotuBean>>> getDouyuLunbotu(@Query("version") String version,
+    Observable<LunbotuBean> getDouyuLunbotu(@Query("version") String version,
                                                                @Query("client_sys") String client_sys);
 }
