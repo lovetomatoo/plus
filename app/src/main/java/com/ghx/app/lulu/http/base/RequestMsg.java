@@ -1,9 +1,5 @@
 package com.ghx.app.lulu.http.base;
 
-import com.cores.utils.FastJSONHelper;
-import com.maimiao.live.tv.statistic.LoggerManager;
-import com.maimiao.live.tv.utils.Utils;
-
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,10 +9,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * 数据请求的 req res都独立封装了
- * 用于数据请求的req   其他的都不介绍了 代码都简单的不能再简单了
  *
- * 这是一个虚拟类  必须要继承才能使用
  */
 public abstract class RequestMsg {
     //请求参数
@@ -74,12 +67,12 @@ public abstract class RequestMsg {
         return params.entrySet();
     }
 
-    public String getJsonBody() {
+    /*public String getJsonBody() {
 
         String query = "";
         query = FastJSONHelper.toJSONStr(params);
         return query;
-    }
+    }*/
 
 //    abstract public String getActionName();
 
