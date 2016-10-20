@@ -47,6 +47,5 @@ public class HomeFragmentPresenter extends BasePresenter<IHomeFragmentView> {
 
         //数据有了以后，交给Activity展示
         iView.showList(mList);
-        ToastUtil.showToast("viewShow" + mList.size());
     }
 }

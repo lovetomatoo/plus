@@ -1,6 +1,5 @@
 package com.ghx.app.lulu.http.servicehttp;
 
-import com.ghx.app.lulu.http.base.BaseRequest;
 import com.ghx.app.lulu.model.LunbotuBean;
 
 import java.util.List;
@@ -18,7 +17,7 @@ import rx.Observable;
 //http://capi.douyucdn.cn/api/v1/slide/6?version=2.301&client_sys=android
 public interface LunbotuService {
 
-    @GET("6")
+    @GET("slide/6")
     Observable<LunbotuBean> getDouyuLunbotu(@Query("version") String version,
                                                                @Query("client_sys") String client_sys);
 }

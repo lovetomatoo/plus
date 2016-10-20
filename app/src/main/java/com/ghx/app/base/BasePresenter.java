@@ -1,5 +1,6 @@
 package com.ghx.app.base;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.os.Message;
 
@@ -49,6 +50,10 @@ public abstract class BasePresenter<I extends IBaseView> {
     public void setIView(I iv)
     {
         iView=iv;
+    }
+
+    protected Activity getActivity() {
+        return iView.getActivity();
     }
 
 }
