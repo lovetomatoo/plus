@@ -73,7 +73,7 @@ public class HttpTool {
                 .baseUrl(mBaseUrl);
     }
 
-    public Subscription getData(Subscriber<ResponseBody> subscriber, String version, String client_sys) {
+    public Subscription getData(Subscriber<LunbotuBean> subscriber, String version, String client_sys) {
         return mApiService.getDouyuLunbotu(version, client_sys)
                 .compose(schedulersTransformer())
                 .compose(transformer())

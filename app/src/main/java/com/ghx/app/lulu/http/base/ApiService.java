@@ -28,7 +28,7 @@ public interface ApiService<T> {
     public static final String BASE_URL = "http://capi.douyucdn.cn/api/v1/";
 
 
-    @GET("6")
+    @GET("slide/6")
     Observable<BaseResponse<LunbotuBean>> getDouyuLunbotu(@Query("version") String version,
                                             @Query("client_sys") String client_sys);
 

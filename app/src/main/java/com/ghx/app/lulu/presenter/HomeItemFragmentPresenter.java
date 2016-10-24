@@ -8,6 +8,7 @@ import com.ghx.app.lulu.http.base.BaseResponse;
 import com.ghx.app.lulu.http.base.HttpTool;
 import com.ghx.app.lulu.model.HomeItemRvItemModel;
 import com.ghx.app.lulu.model.LunbotuBean;
+import com.ghx.app.lulu.utils.LogUtil;
 import com.ghx.app.lulu.utils.ToastUtil;
 import com.ghx.app.lulu.view.IHomeItemFragmentView;
 
@@ -53,7 +54,7 @@ public class HomeItemFragmentPresenter extends BasePresenter<IHomeItemFragmentVi
         hashMap.put("version", "2.301");
         hashMap.put("client_sys", "android");
 
-        HttpTool.getInstance(getActivity()).get("slide/6", hashMap, new Subscriber<BaseResponse>() {
+        HttpTool.getInstance(getActivity()).getData(new Subscriber<LunbotuBean>() {
             @Override
             public void onCompleted() {
 
@@ -65,11 +66,11 @@ public class HomeItemFragmentPresenter extends BasePresenter<IHomeItemFragmentVi
             }
 
             @Override
-            public void onNext(BaseResponse BaseResponse) {
-                ToastUtil.showToast("???");
+            public void onNext(LunbotuBean lunbotuBean) {
+               iView.showAds(lunbotuBean);
             }
 
-        });
+        }, "2.301", "android");
     }
 
     //http://capi.douyucdn.cn/api/v1/live?offset=0&limit=20&client_sys=android
