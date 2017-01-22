@@ -4,17 +4,12 @@ import android.os.Bundle;
 import android.os.Message;
 
 import com.ghx.app.base.BasePresenter;
-import com.ghx.app.lulu.http.base.BaseResponse;
-import com.ghx.app.lulu.http.base.HttpTool;
 import com.ghx.app.lulu.model.HomeItemRvItemModel;
 import com.ghx.app.lulu.model.LunbotuBean;
-import com.ghx.app.lulu.utils.LogUtil;
-import com.ghx.app.lulu.utils.ToastUtil;
 import com.ghx.app.lulu.view.IHomeItemFragmentView;
 
 import java.util.HashMap;
 
-import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -54,23 +49,23 @@ public class HomeItemFragmentPresenter extends BasePresenter<IHomeItemFragmentVi
         hashMap.put("version", "2.301");
         hashMap.put("client_sys", "android");
 
-        HttpTool.getInstance(getActivity()).getData(new Subscriber<LunbotuBean>() {
-            @Override
-            public void onCompleted() {
-
-            }
-
-            @Override
-            public void onError(Throwable e) {
-
-            }
-
-            @Override
-            public void onNext(LunbotuBean lunbotuBean) {
-               iView.showAds(lunbotuBean);
-            }
-
-        }, "2.301", "android");
+//        HttpTool.getInstance(getActivity()).getData(new Subscriber<LunbotuBean>() {
+//            @Override
+//            public void onCompleted() {
+//
+//            }
+//
+//            @Override
+//            public void onError(Throwable e) {
+//
+//            }
+//
+//            @Override
+//            public void onNext(LunbotuBean lunbotuBean) {
+//               iView.showAds(lunbotuBean);
+//            }
+//
+//        }, "2.301", "android");
     }
 
     //http://capi.douyucdn.cn/api/v1/live?offset=0&limit=20&client_sys=android
