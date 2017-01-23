@@ -21,6 +21,7 @@ import java.util.List;
 public class HomeViewPagerAdapter extends FragmentStatePagerAdapter {
 
     private List<HomeViewPagerBean> mList;
+    private String TAG = getClass().getSimpleName();
 
     public HomeViewPagerAdapter(FragmentManager fm, List<HomeViewPagerBean> list) {
         super(fm);
@@ -32,7 +33,7 @@ public class HomeViewPagerAdapter extends FragmentStatePagerAdapter {
 //        if (position == 0) {
             HomeItemFragment homeItemFragment = new HomeItemFragment();
             homeItemFragment.setFlag(mList.get(position).id);
-            LogUtil.i_log("new HomeItemFragment()");
+            LogUtil.i_log(TAG, "new HomeItemFragment()");
             return homeItemFragment;
 //        } else {
 //            return new HomeItemFragment();

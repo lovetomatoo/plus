@@ -11,6 +11,8 @@ public class FrameApplication extends Application {
 
     private static FrameApplication mAppInstance;
 
+    public static final boolean isDebug = true;
+
     public static FrameApplication getAppInstance() {
 
         return mAppInstance;

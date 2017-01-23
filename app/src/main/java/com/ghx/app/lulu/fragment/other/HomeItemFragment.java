@@ -9,6 +9,7 @@ import com.ghx.app.lulu.adapter.HomeItemRecylerViewAdapter;
 import com.ghx.app.lulu.model.HomeItemRvItemModel;
 import com.ghx.app.lulu.model.LunbotuBean;
 import com.ghx.app.lulu.presenter.HomeItemFragmentPresenter;
+import com.ghx.app.lulu.utils.LogUtil;
 import com.ghx.app.lulu.utils.ToastUtil;
 import com.ghx.app.lulu.view.IHomeItemFragmentView;
 import com.ghx.app.lulu.weiget.autoscroll_viewpager.AutoScrollViewPager;
@@ -23,6 +24,8 @@ import java.util.List;
  */
 
 public class HomeItemFragment extends BaseFragment<HomeItemFragmentPresenter> implements IHomeItemFragmentView, PullLoadMoreRecyclerView.PullLoadMoreListener {
+
+    private String TAG = getClass().getSimpleName();
 
     List<String> mPicUrlList = new ArrayList<>();
 
@@ -48,7 +51,6 @@ public class HomeItemFragment extends BaseFragment<HomeItemFragmentPresenter> im
 
     @Override
     protected void initAllWidget(View rootView) {
-
         mVpAuto = (AutoScrollViewPager) rootView.findViewById(R.id.vp_auto);
         mRvPullLoadMore = (PullLoadMoreRecyclerView) rootView.findViewById(R.id.rv_pull_load_more);
         mRvHead = (RecyclerViewHeader) rootView.findViewById(R.id.rv_head);
@@ -56,9 +58,6 @@ public class HomeItemFragment extends BaseFragment<HomeItemFragmentPresenter> im
         mRvPullLoadMore.setGridLayout(2);
         //显示下拉刷新
         mRvPullLoadMore.setRefreshing(true);
-        //请求数据
-        mPresenter.getItemServerData(index);
-        mPresenter.getAdsServerData();
 //        //设置上拉刷新文字
 //        mRvPullLoadMore.setFooterViewText("loading");
 //        //设置上拉刷新文字颜色
@@ -119,7 +118,7 @@ public class HomeItemFragment extends BaseFragment<HomeItemFragmentPresenter> im
         index = 0;
         ToastUtil.showToast("onRefresh");
         mRvPullLoadMore.setRefreshing(true);
-        mPresenter.getItemServerData(index);
+//        mPresenter.getItemServerData(index);
         mPresenter.getAdsServerData();
     }
 
@@ -127,7 +126,7 @@ public class HomeItemFragment extends BaseFragment<HomeItemFragmentPresenter> im
     public void onLoadMore() {
 
         ToastUtil.showToast("onLoadMore");
-        mPresenter.getItemServerData(index++);
+//        mPresenter.getItemServerData(index++);
     }
 
     public PullLoadMoreRecyclerView getmRvPullLoadMore() {

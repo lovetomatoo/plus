@@ -26,6 +26,7 @@ public class HomeItemRecylerViewAdapter extends RecyclerView.Adapter<HomeItemRec
     private Context mContext;
 
     private List<HomeItemRvItemModel.DataBean> mList = new ArrayList<>();
+    private String TAG = getClass().getSimpleName();
 
     public HomeItemRecylerViewAdapter(Context context) {
         mContext = context;
@@ -34,7 +35,7 @@ public class HomeItemRecylerViewAdapter extends RecyclerView.Adapter<HomeItemRec
     @Override
     public HomeItemRecylerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        LogUtil.i_log("viewType == " + viewType + "");
+        LogUtil.i_log(TAG, "viewType == " + viewType + "");
 
         return new ViewHolder(View.inflate(parent.getContext(), R.layout.item_recyleview_homeitem, null));
     }

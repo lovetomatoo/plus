@@ -2,10 +2,13 @@ package com.ghx.app.lulu.presenter;
 
 import android.os.Bundle;
 import android.os.Message;
+import android.util.Log;
 
 import com.ghx.app.base.BasePresenter;
+import com.ghx.app.lulu.http.ApiClient;
 import com.ghx.app.lulu.model.HomeItemRvItemModel;
 import com.ghx.app.lulu.model.LunbotuBean;
+import com.ghx.app.lulu.utils.LogUtil;
 import com.ghx.app.lulu.view.IHomeItemFragmentView;
 
 import java.util.HashMap;
@@ -18,6 +21,7 @@ import retrofit2.http.Query;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
 /**
@@ -26,6 +30,8 @@ import rx.schedulers.Schedulers;
 
 public class HomeItemFragmentPresenter extends BasePresenter<IHomeItemFragmentView> {
 
+    private String TAG = getClass().getSimpleName();
+
     @Override
     public void handleMsg(Message msg) {
 
@@ -33,7 +39,8 @@ public class HomeItemFragmentPresenter extends BasePresenter<IHomeItemFragmentVi
 
     @Override
     public void initData(Bundle savedInstanceState) {
-
+        getItemServerData(0);
+        getAdsServerData();
     }
 
     @Override
@@ -69,14 +76,13 @@ public class HomeItemFragmentPresenter extends BasePresenter<IHomeItemFragmentVi
     }
 
     //http://capi.douyucdn.cn/api/v1/live?offset=0&limit=20&client_sys=android
-    public interface ItemDataService {
-
-        @GET("live")
-        Observable<HomeItemRvItemModel> getItemData(@Query("offset") int offset, @Query("limit") String limit, @Query("client_sys") String client_sys);
-    }
+//    public interface ItemDataService {
+//        @GET("live")
+//        Observable<HomeItemRvItemModel> getItemData(@Query("offset") int offset, @Query("limit") String limit, @Query("client_sys") String client_sys);
+//    }
 
     public void getItemServerData(int index) {
-        String baseUrl = "http://capi.douyucdn.cn/api/v1/";
+        /*String baseUrl = "http://capi.douyucdn.cn/api/v1/";
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
@@ -103,24 +109,21 @@ public class HomeItemFragmentPresenter extends BasePresenter<IHomeItemFragmentVi
                     public void onNext(HomeItemRvItemModel homeItemRvItemModel) {
                         iView.showItem(homeItemRvItemModel);
                     }
-                });
+                });*/
+        LogUtil.i_log(TAG, "TEST");
 
-
-
-        /*call.enqueue(new Callback<HomeItemRvItemModel>() {
+        ApiClient.getInstance().getItemServerData(index, "20", "android").subscribe(new Action1<HomeItemRvItemModel>() {
             @Override
-            public void onResponse(Call<HomeItemRvItemModel> call, Response<HomeItemRvItemModel> response) {
-                LogUtil.i_log(response.body().toString());
-                //处理
-                iView.showItem(response.body());
+            public void call(HomeItemRvItemModel homeItemRvItemModel) {
+                LogUtil.i_log(TAG, homeItemRvItemModel.data.get(0).nickname);
+                LogUtil.i_log(TAG, Thread.currentThread().getName());
             }
-
+        }, new Action1<Throwable>() {
             @Override
-            public void onFailure(Call<HomeItemRvItemModel> call, Throwable t) {
-                String s = t.getMessage();
-                LogUtil.i_log(s + "");
+            public void call(Throwable throwable) {
+                LogUtil.i_log(TAG, throwable.toString());
             }
-        });*/
+        });
     }
 
 }

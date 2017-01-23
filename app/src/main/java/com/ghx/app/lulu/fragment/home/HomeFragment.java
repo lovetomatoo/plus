@@ -24,6 +24,8 @@ import java.util.List;
 
 public class HomeFragment extends BaseFragment<HomeFragmentPresenter> implements IHomeFragmentView, Topbar.On2ClickListener {
 
+    private String TAG = getClass().getSimpleName();
+
     private List<HomeViewPagerBean> mList = new ArrayList<>();
 
     private ViewPager mViewPagerHome;
@@ -54,7 +56,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentPresenter> implements
         topbar.setOnTopbar2ClickListener(this);
 
         mTabLayoutHome.setTabMode(TabLayout.MODE_FIXED);
-        LogUtil.i_log("HomeFragment_initAllWidget");
+        LogUtil.i_log(TAG, "HomeFragment_initAllWidget");
     }
 
     @Override
@@ -79,7 +81,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentPresenter> implements
     @Override
     public void onDestroy() {
         super.onDestroy();
-        LogUtil.i_log("HomeFragment_onDestroy");
+        LogUtil.i_log(TAG, "HomeFragment_onDestroy");
     }
 
     @Override

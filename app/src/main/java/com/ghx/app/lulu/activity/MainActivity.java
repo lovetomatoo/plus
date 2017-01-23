@@ -34,10 +34,13 @@ import java.util.List;
 
 public class MainActivity extends BaseActivity<MainPresenter> implements IMainView {
 
+    private String TAG = getClass().getSimpleName();
+
     private long exitTime = 0;
 
     private ImageView mIvFuceng;
     private NoScrollViewPager mViewPager;
+
     private List<Fragment> mList = new ArrayList<>();
     private RadioGroup mRadioGroup;
 
@@ -125,7 +128,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements IMainVi
     //两次Back退出应用
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        Log.d("guohongxin", "onKeyDown");
+        Log.d(TAG, "onKeyDown");
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
 
             if ((System.currentTimeMillis() - exitTime) > 2000) {
