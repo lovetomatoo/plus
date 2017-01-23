@@ -33,7 +33,7 @@ public abstract class BaseResponse {
         return code == ApiConstants.SUCCESS && getData() != null;
     }
 
-    public void assertSuccessful() {
+/*    public void assertSuccessful() {
         if (!isSuccessful()) {
             if (getCode() == ApiConstants.UNLOGIN) {
 //                if (UserInfoManager.hasLogin()) {
@@ -42,7 +42,7 @@ public abstract class BaseResponse {
             }
             throw new ServerResponseException(message);
         }
-    }
+    }*/
 
     @Override
     public String toString() {

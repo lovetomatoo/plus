@@ -21,7 +21,6 @@ import okhttp3.Response;
  */
 public class SignUrlInterceptorDebug implements Interceptor {
 
-
     public static String randomStr() throws NoSuchAlgorithmException {
         String value = "Hi" + (new Date().getTime()) + (Math.random());
         return DigestUtil.getMD5(value);

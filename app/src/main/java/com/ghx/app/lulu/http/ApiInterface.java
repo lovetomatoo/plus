@@ -28,33 +28,6 @@ import rx.Observable;
  */
 public interface ApiInterface {
     String URL_BASE = "http://capi.douyucdn.cn/api/v1/";
-    int PAGE_SIZE = 20;
-
-    int REPORT_TYPE_OTHER_LIVE = 0;
-    int REPORT_TYPE_PORNO_LIVE = 1;
-    int REPORT_TYPE_POLITICAL_LIVE = 2;
-    int REPORT_TYPE_AD_LIVE = 3;
-    int REPORT_TYPE_ABUSE_LIVE = 4;
-
-    int REPORT_TYPE_OTHER_USER_PAGE = 10;
-    int REPORT_TYPE_PORNO_USER_PAGE = 11;
-    int REPORT_TYPE_POLITICAL_USER_PAGE = 12;
-    int REPORT_TYPE_AD_USER_PAGE = 13;
-    int REPORT_TYPE_ABUSE_USER_PAGE = 14;
-
-    int REPORT_TYPE_OTHER_PLAYBACK = 20;
-    int REPORT_TYPE_PORNO_PLAYBACK = 21;
-    int REPORT_TYPE_POLITICAL_PLAYBACK = 22;
-    int REPORT_TYPE_AD_PLAYBACK = 23;
-    int REPORT_TYPE_ABUSE_PLAYBACK = 24;
-
-    @IntDef(value = {
-            REPORT_TYPE_OTHER_LIVE, REPORT_TYPE_PORNO_LIVE, REPORT_TYPE_POLITICAL_LIVE, REPORT_TYPE_AD_LIVE, REPORT_TYPE_ABUSE_LIVE,
-            REPORT_TYPE_OTHER_USER_PAGE, REPORT_TYPE_PORNO_USER_PAGE, REPORT_TYPE_POLITICAL_USER_PAGE, REPORT_TYPE_AD_USER_PAGE, REPORT_TYPE_ABUSE_USER_PAGE,
-            REPORT_TYPE_OTHER_PLAYBACK, REPORT_TYPE_PORNO_PLAYBACK, REPORT_TYPE_POLITICAL_PLAYBACK, REPORT_TYPE_AD_PLAYBACK, REPORT_TYPE_ABUSE_PLAYBACK})
-    @Retention(RetentionPolicy.SOURCE)
-    @interface ReportType {
-    }
 
     @GET("live")
     Observable<HomeItemRvItemModel> getItemServerData(@Query("offset") int offset, @Query("limit") String limit, @Query("client_sys") String client_sys);
